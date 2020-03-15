@@ -1,10 +1,8 @@
 Problems to solve
     Shapes.lua
     -Shapes should not spawn on top of each other
-    -Shapes need borders and should overlap over shapes
-    main.lua
-    -Need to make outside border  
-
+    main.lua	
+    -prevent shapes from being pushed through border wall
 To Do
     -Make more shapes
     -Create Reward Methods --find out how to print sideways text

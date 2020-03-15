@@ -34,7 +34,7 @@ function shapes.circle(x, y, radius)
 	aCircle:setFillColor( 121, 121, 121 )      -- fill the circle with color
 	aCircle.strokeWidth = 4   -- Sets the width of the border of circle
 	aCircle:setStrokeColor( 128, 0, 0 )    -- Sets the border color
-	table.insert( currentShapes, aCircle )
+	table.insert( currentshapes, aCircle )
 
 	physics.addBody( aCircle, {friction = 0.5, bounce = 0.7, radius = rad})
 
