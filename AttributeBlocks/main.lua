@@ -4,48 +4,19 @@
 
 --change the path below to the lib directory
 local lib =  "C:\\Users\\cjmar\\Documents\\SHARED\\Software Engineering\\Learning Modules\\AttributeBlocks\\lib\\"
---local lib =  ".\\lib\\" --trying to get this to work
+--local lib =  ".\\lib" --trying to get this to work
 package.path = lib .. "?.lua;" .. package.path
 local useShapes = require "shapes"
+local setGame = require "gameSetup"
 
 
-local background = display.newImageRect( ".\\images\\spacebackground1.jpg", display.contentWidth , display.contentHeight )
-background.x = display.contentCenterX
-background.y = display.contentCenterY
+setGame.startMenu()
 
-local moon = display.newImage( ".\\images\\moon.png", 675, 675  ) 
-moon.x = display.contentCenterX
-moon.y = display.contentCenterY
-moon.alpha = 0.6 --make moon transparent
 
-local letterboxWidth = math.abs(display.screenOriginX)
-local letterboxHeight = math.abs(display.screenOriginY)
-local physics = require( "physics" )
-
-local leftWall = display.newRect( display.contentCenterX - display.contentWidth / 2 , display.contentCenterY, 10, display.contentHeight )
-leftWall.anchorX = 1
-physics.addBody( leftWall, "static", { bounce=1, friction=0.1 } )
-
-local rightWall = display.newRect( display.contentCenterX + display.contentWidth / 2, display.contentCenterY, 20, display.contentHeight )
-rightWall.anchorX = 0
-physics.addBody( rightWall, "static", { bounce=1, friction=0.1 } )
-
-local topWall = display.newRect( display.contentCenterX, display.contentCenterY - display.contentHeight / 2, display.contentWidth, 20 )
-topWall.anchorY = 1
-physics.addBody( topWall, "static", { bounce=0, friction=0 } )
-
-local wallBottom = display.newRect( display.contentCenterX, display.contentCenterY + display.contentHeight / 2, display.contentWidth, 20 )
-wallBottom.anchorY = 0
-physics.addBody( wallBottom, "static", { bounce=0.4, friction=0.6 } )
-
-useShapes.start()
+--useShapes.start()
 
 
 
-
-
---display text (need to figure out how to turn sideways)
-local makeText = display.newText( "Place Objects on moon", display.contentCenterX, 500, native.systemFont, 100 )
 
 
 
