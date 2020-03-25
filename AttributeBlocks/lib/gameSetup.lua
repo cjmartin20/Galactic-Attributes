@@ -15,10 +15,11 @@ function gameSetup.gameBackground()
     background.x = display.contentCenterX
     background.y = display.contentCenterY
     --Display Moon in middle of screen
-    local moon = display.newImage( ".\\lib\\images\\moon.png", 675, 675  ) 
+    --local moon = display.newImage( ".\\lib\\images\\bigMoon.png" ) 
+    local moon = display.newImageRect( ".\\lib\\images\\smallMoon.png", 0.85 * display.contentWidth, 0.85 * display.contentWidth ) 
     moon.x = display.contentCenterX
     moon.y = display.contentCenterY
-    moon.alpha = 0.6 --make moon transparent
+    --moon.alpha = 0.8 --make moon transparent
 
     
     local letterboxWidth = math.abs(display.screenOriginX)
@@ -42,7 +43,7 @@ function gameSetup.gameBackground()
     physics.addBody( wallBottom, "static", { bounce=0.4, friction=0.6 } )
 
     --display text (need to figure out how to turn sideways)
-    local makeText = display.newText( "Place Objects on moon", display.contentCenterX, 500, native.systemFont, 100 )
+    local makeText = display.newText( "Place Objects on moon", display.contentCenterX, display.contentWidth / 30.0, native.systemFont, display.contentHeight / 30.0 )
     
     return true
 end 
