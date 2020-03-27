@@ -5,7 +5,10 @@
 local gameSetup = {}
 
 --Function to display start menu
-
+local lib =  "C:\\Users\\cjmar\\Documents\\SHARED\\Software Engineering\\Learning Modules\\AttributeBlocks\\lib\\"
+--local lib =  ".\\lib" --trying to get this to work
+package.path = lib .. "?.lua;" .. package.path
+local useShapes = require "shapes"
 
 --function to display game background and setup boundaries
 function gameSetup.gameBackground()
@@ -15,16 +18,17 @@ function gameSetup.gameBackground()
     background.x = display.contentCenterX
     background.y = display.contentCenterY
     --Display Moon in middle of screen
-    --local moon = display.newImage( ".\\lib\\images\\bigMoon.png" ) 
     local moon = display.newImageRect( ".\\lib\\images\\smallMoon.png", 0.85 * display.contentWidth, 0.85 * display.contentWidth ) 
     moon.x = display.contentCenterX
     moon.y = display.contentCenterY
     --moon.alpha = 0.8 --make moon transparent
 
-    
+    --Creates walls
     local letterboxWidth = math.abs(display.screenOriginX)
     local letterboxHeight = math.abs(display.screenOriginY)
     local physics = require( "physics" )
+    physics.start()
+    physics.setGravity( 0, 0 ) --( gravityX, gravityY )
 
     local leftWall = display.newRect( display.contentCenterX - display.contentWidth / 2 , display.contentCenterY, 10, display.contentHeight )
     leftWall.anchorX = 1
@@ -43,8 +47,27 @@ function gameSetup.gameBackground()
     physics.addBody( wallBottom, "static", { bounce=0.4, friction=0.6 } )
 
     --display text (need to figure out how to turn sideways)
-    local makeText = display.newText( "Place Objects on moon", display.contentCenterX, display.contentWidth / 30.0, native.systemFont, display.contentHeight / 30.0 )
-    
+    local topText = display.newText( {
+        text = "place quadrilaterals on moon\n                 (4 sides)", --text
+        x = display.contentCenterX, --x
+        y = 0.12 * display.contentHeight, --display.contentHeight / 30, --y 
+        width = 0.65 * display.contentWidth, --width
+        height = 0.15 * display.contentHeight, --height
+        font = native.systemFont, --font
+        fontsize = 0.20 * display.contentHeight --fontsize
+        }
+    )
+    local bottomText = display.newText( {
+        text = "      green shapes are correct", --text
+        x = display.contentCenterX , --x
+        y = display.contentHeight, --display.contentHeight / 30, --y 
+        width = 0.65 * display.contentWidth, --width
+        height = 0.15 * display.contentHeight, --height
+        font = native.systemFont, --font
+        fontsize = 0.20 * display.contentHeight --fontsize
+        }
+    )
+
     return true
 end 
 
@@ -55,7 +78,7 @@ function gameSetup.startMenu()
     _W = display.contentWidth;
     _H = display.contentHeight;
     
-    
+
     local background = display.newImageRect( ".\\lib\\images\\Uranus.jpg", display.contentWidth , display.contentHeight )
     background.x = display.contentCenterX
     background.y = display.contentCenterY
@@ -76,7 +99,9 @@ function gameSetup.startMenu()
     
         if "ended" == phase then
             --local btn = event.target 
+
             gameSetup.gameBackground()
+            useShapes.start()
        
         end
     end

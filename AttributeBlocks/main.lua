@@ -9,11 +9,10 @@ package.path = lib .. "?.lua;" .. package.path
 local useShapes = require "shapes"
 local setGame = require "gameSetup"
 
+setGame.gameBackground()
+useShapes.start()
+--setGame.startMenu()
 
-setGame.startMenu()
-
-
---useShapes.start()
 
 
 

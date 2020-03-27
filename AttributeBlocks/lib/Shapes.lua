@@ -6,37 +6,152 @@
 local shapes = {}
 local currentShapes = {}
 local physics = require( "physics" )
-physics.start( true )
-physics.setGravity( 0, 0 ) --( gravityX, gravityY )
+local currentAttribute = "round"
+local attributeList = {
+
+}
+
 
 --Initializing function
 function shapes.start()
-	shapes.createCircle(500, 500, 200)
+	shapes.createCircle( 0.15 * display.contentWidth, 0.10 * display.contentHeight, 200  ) 
+	shapes.createCircle( display.contentCenterX, 0.95 * display.contentHeight, 200  )
+	shapes.createBoxSmall( 0.90 * display.contentWidth, 0.15 * display.contentHeight, 250  )
+	shapes.createBoxSmall( 0.85 * display.contentWidth, 0.90 * display.contentHeight, 250  )
+
+end
+
+function shapes.changeAttribute()
+	--create function to randomly assign the attribute to focus
+	number = math.random( 0, 1)
+	currentAttribute = number
+	print(currentAttribute)
 end
 
 --Move shapes function
-function shapes.moveShape( event )  
+function shapes.moveShape( event )
+
 	local object = event.target
-	object.x = event.x
-	object.y = event.y
+	local touchDistance = object.width
+	--[[
+	--X distance to keep object center away from edge
+	local cushionX = 0.01 * display.contentWidth
+	--Y distance to keep object center away from edge
+	local cushionY = 0.01 * display.contentHeight
+
+	--make boundaries to prevent objects from leaving screen
+	if object.x < cushionX or object.x < ( display.contentWidth - cushionX ) then
+		--if it is top
+		if object.x < cushionX then
+			object.x = object.x + cushionX
+		else
+			object.x = object.x - cushionX
+		end	
+	else
+		object.x = event.x
+	end 
+	if object.y < cushionY or object.y < ( display.contentHeight - cushionY ) then
+		--if it is left side
+		if object.y < cushionX then
+			object.y = object.y + cushionY
+		else
+			object.y = object.y - cushionY
+		end	
+	else
+		object.y = event.y
+	end 
+	--]]
+	--Shape is not too close to border
+		--Shape is within attribute area 
+		--if  then
+			--Shape has named attribute
+		--	if then
+	
+	--Move shape
+	if math.abs( object.x - event.x ) < touchDistance and math.abs( object.y - event.y ) < touchDistance then
+		object.x = event.x
+		object.y = event.y
+	end
+	if shapes.isShapeWithinRadius( object, .85 * display.contentCenterX, display.contentCenterX, display.contentCenterY) then
+		if shapes.hasAttribute( object ) then
+			--change color to green
+			object:setFillColor( 0, 128 , 0)
+		else
+			--change color to red
+			object:setFillColor( 128, 0 , 0 )
+		end
+	else
+		object:setFillColor( 30, 0, 150 )
+	end 
+
+--	if object.vertices == false then
+--		print("Not vertices")
+--	end
+end --moveShape function
+
+--function to check if shapes is within certain radius of x, y coordinate
+function shapes.isShapeWithinRadius( obj, radius, x, y )
+	radius = radius or 0.4 * display.contentCenterX
+	x = x or display.contentCenterX
+	y = y or display.contentCenterY
+
+	x = (obj.x - x) * (obj.x - x)
+	y = (obj.y - y) * (obj.y - y)
+	distance = math.sqrt( x + y )
+
+	if distance < radius then
+		return true
+	else
+		return false
+	end
 end
+
+function shapes.hasAttribute( object )
+	if object.width == 260 then
+		print(object.width)
+		return true
+	else 
+		return false
+	end
+end
+
+
+
 
 --Create circle function
 function shapes.createCircle(x , y, rad)
-	--need to make default parameters
-	x = x or contentCenterX
-	y = y or contentCenterY
+	x = x or display.contentCenterX
+	y = y or display.contentCenterY
 	rad = rad or 150
-
-	local aCircle = display.newCircle( x, y, rad )		--x-coordinate, y-coordinate, radius
-	aCircle:setFillColor( 121, 121, 121 )      -- fill the circle with color
-	aCircle.strokeWidth = 4   -- Sets the width of the border of circle
-	aCircle:setStrokeColor( 128, 0, 0 )    -- Sets the border color
-	table.insert( currentShapes, aCircle )
-	physics.addBody( aCircle, {friction = 0.5, bounce = 0.7, radius = rad, setGravity = 0 })
+	--make random colors (excluding green - setting to zero)
+	Red = 30
+	Green = 0
+	Blue = 150
+	aCircle = display.newCircle( x, y, rad )		--x-coordinate, y-coordinate, radius
+	aCircle:setFillColor( Red, Green, Blue )      -- fill the circle with color
+	aCircle.strokeWidth = 10   -- Sets the width of the border of circle
+	aCircle:setStrokeColor( 128, 0, 128 )    -- Sets the border color
+	physics.addBody( aCircle, {friction = 0.5, bounce = 0.7, radius = rad, setGravity = .5 })
 	aCircle:addEventListener( "touch", shapes.moveShape )
-
+	aCircle.alpha = 0.7 --circle opacity 
 	return aCircle
+end
+-- Create small box function
+function shapes.createBoxSmall(x, y, sideLength)
+	x = x or display.contentCenterX
+	y = y or display.contentCenterY
+	sideLength = sideLength or 150
+	--make random colors (excluding green - setting to zero)
+	Red = 30
+	Green = 0
+	Blue = 150
+	local boxSmall = display.newRect( x, y, sideLength, sideLength )
+	boxSmall.strokeWidth = 10   -- Sets the width of the border of circle
+	boxSmall:setStrokeColor( Red, Green, Blue )    -- Sets the border color
+	physics.addBody( boxSmall, { friction=0.5, bounce=0.4 } )
+	boxSmall:addEventListener( "touch", shapes.moveShape )
+	boxSmall.alpha = 0.7 --circle opacity 
+	return boxSmall
 end
 
 --[[
@@ -70,12 +185,7 @@ local function createHexagon()
 	return hexagon
 end
 
--- Create small box function
-local function createBoxSmall()
-	local boxSmall = display.newRect( worldGroup, 0, 0, 50, 50 )
-	physics.addBody( boxSmall, { friction=0.5, bounce=0.4 } )
-	return boxSmall
-end
+
 
 -- Create large box function
 local function createBoxLarge()
