@@ -8,10 +8,12 @@ local lib =  "C:\\Users\\cjmar\\Documents\\SHARED\\Software Engineering\\Learnin
 package.path = lib .. "?.lua;" .. package.path
 local useShapes = require "shapes"
 local setGame = require "gameSetup"
+local circ = require "circle"
 
 setGame.gameBackground()
 useShapes.start()
 --setGame.startMenu()
+circ.createCircle( 500, 500, 200  )
 
 
 
@@ -128,4 +130,56 @@ function Shapes.findClosestObj( eventX, eventY )
 	end
 	return currentShapes[closestIndex]
 end
---]]
+
+
+
+
+
+
+	----------------------------------------------------------
+	----Attempt at boarders
+	--X distance to keep object center away from edge
+	local cushionX = 0.01 * display.contentWidth
+	--Y distance to keep object center away from edge
+	local cushionY = 0.01 * display.contentHeight
+
+	--make boundaries to prevent objects from leaving screen
+	if object.x < cushionX or object.x < ( display.contentWidth - cushionX ) then
+		--if it is top
+		if object.x < cushionX then
+			object.x = object.x + cushionX
+		else
+			object.x = object.x - cushionX
+		end	
+	else
+		object.x = event.x
+	end 
+	if object.y < cushionY or object.y < ( display.contentHeight - cushionY ) then
+		--if it is left side
+		if object.y < cushionX then
+			object.y = object.y + cushionY
+		else
+			object.y = object.y - cushionY
+		end	
+	else
+		object.y = event.y
+	end 
+	--Shape is not too close to border
+		--Shape is within attribute area 
+		--if  then
+			--Shape has named attribute
+		--	if then
+	
+
+	--circle.createCircle( 0.15 * display.contentWidth, 0.10 * display.contentHeight, 200  ) 
+	--aCircle:addEventListener( "touch", shapes.moveShape )
+	--shapes.createCircle( display.contentCenterX, 0.95 * display.contentHeight, 200  )
+	--shapes.createBoxSmall( 0.90 * display.contentWidth, 0.15 * display.contentHeight, 250  )
+	--shapes.createBoxSmall( 0.85 * display.contentWidth, 0.90 * display.contentHeight, 250  )
+
+
+
+
+
+
+		--]]
