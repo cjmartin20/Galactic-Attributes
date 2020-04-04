@@ -6,7 +6,7 @@
 local lib =  "C:\\Users\\cjmar\\Documents\\SHARED\\Software Engineering\\Learning Modules\\AttributeBlocks\\lib\\"
 --local lib =  ".\\lib" --trying to get this to work
 package.path = lib .. "?.lua;" .. package.path
-local useShapes = require "attributes"
+local useAttributes = require "attributes"
 local setGame = require "gameSetup"
 local circ = require "circle"
 

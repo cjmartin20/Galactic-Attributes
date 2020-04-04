@@ -8,7 +8,7 @@ local gameSetup = {}
 local lib =  "C:\\Users\\cjmar\\Documents\\SHARED\\Software Engineering\\Learning Modules\\AttributeBlocks\\lib\\"
 --local lib =  ".\\lib" --trying to get this to work
 package.path = lib .. "?.lua;" .. package.path
-local useShapes = require "shapes"
+local useAttributes = require "attributes"
 
 --function to display game background and setup boundaries
 function gameSetup.gameBackground()

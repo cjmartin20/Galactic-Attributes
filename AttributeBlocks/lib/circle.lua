@@ -10,7 +10,7 @@ local circle = {
     "no vertices"
 }
 
-local shapes = require "attributes"
+local useAttributes = require "attributes"
 
 --function createCircle displays circle object and initializes circle.hasAttrube
 --based on currentAttribute in shapes.lua.
@@ -32,7 +32,7 @@ function circle.createCircle( attribute )
     --check if cirlce has attributes.currentAttribute (in attributes.lua table)
     for index, attribute in ipairs(circle) do
         print("checking ", index, attribute)
-        if attribute == attributes.currentAttribute then
+        if attribute == useAttributes.currentAttribute then
             circle.hasAttribute = true
             print("true")
         end
@@ -55,7 +55,7 @@ function circle.move( event )
 		object.y = event.y
     end
     --Change color if circle is in moon and has attribute
-	if attributes.isShapeWithinRadius( object, .85 * display.contentCenterX, display.contentCenterX, display.contentCenterY) then
+	if useAttributes.isShapeWithinRadius( object, .85 * display.contentCenterX, display.contentCenterX, display.contentCenterY) then
         if circle.hasAttribute then
 			--change color to green
 			object:setFillColor( 0, 128 , 0)

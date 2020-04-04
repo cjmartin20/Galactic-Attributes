@@ -28,7 +28,7 @@ local attributes = {
 
 
 --Initializing function
-function shapes.start()
+function attributes.start()
 
 	attributes.currentAttribute = "radius"
 
