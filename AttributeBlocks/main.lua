@@ -6,12 +6,12 @@
 local lib =  "C:\\Users\\cjmar\\Documents\\SHARED\\Software Engineering\\Learning Modules\\AttributeBlocks\\lib\\"
 --local lib =  ".\\lib" --trying to get this to work
 package.path = lib .. "?.lua;" .. package.path
-local useShapes = require "shapes"
+local useShapes = require "attributes"
 local setGame = require "gameSetup"
 local circ = require "circle"
 
 setGame.gameBackground()
-useShapes.start()
+useAttributes.start()
 --setGame.startMenu()
 circ.createCircle( 500, 500, 200  )
 
