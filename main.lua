@@ -3,17 +3,23 @@
 ---------------------------------------------------------------
 
 --change the path below to the lib directory
-local lib =  "C:\\Users\\cjmar\\Documents\\SHARED\\Software Engineering\\Learning Modules\\AttributeBlocks\\lib\\"
+local lib =  "C:\\Users\\cjmar\\Documents\\SHARED\\Software Engineering\\Lua\\AttributeBlocks\\lib\\"
 --local lib =  ".\\lib" --trying to get this to work
 package.path = lib .. "?.lua;" .. package.path
 local useAttributes = require "attributes"
 local setGame = require "gameSetup"
-local circ = require "circle"
+local useCircle = require "circle"
+local useSquare = require "square"
+
+
+
 
 setGame.gameBackground()
 useAttributes.start()
+useCircle.createCircle()
+useSquare.createSquare()
 --setGame.startMenu()
-circ.createCircle( 500, 500, 200  )
+
 
 
 

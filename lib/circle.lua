@@ -11,13 +11,15 @@ local circle = {
 }
 
 local useAttributes = require "attributes"
+local usePhysics = require "physics"
+
 
 --function createCircle displays circle object and initializes circle.hasAttrube
 --based on currentAttribute in shapes.lua.
-function circle.createCircle( attribute )
-	local x = display.contentCenterX
-	local y = display.contentCenterY
-    local rad = 150
+function circle.createCircle( x, y, rad )
+	x = x or display.contentCenterX
+	y = y or display.contentCenterY
+    rad = rad or 150
 	--make random colors (excluding green - setting to zero)
 	Red = 30
 	Green = 0

@@ -13,24 +13,20 @@ local attributes = {
 	"radius",
 	"circumference",
 	"right angles",
-	"hypotenuse"
+	"hypotenuse",
 
 	--number related attributes
+	"prime",
+	"even",
+	"odd"
 }
---local currentShapes = {}
-
---local currentAttribute = "round"
---local attributeList = {
---}
-
---reference classes
---local circle = require "circle"
-
 
 --Initializing function
 function attributes.start()
 
 	attributes.currentAttribute = "radius"
+	print("works so far")
+	--useCircle.createCircle( 500, 500, 200  )
 
 end
 
@@ -53,31 +49,13 @@ function attributes.isShapeWithinRadius( obj, radius, x, y )
 	end
 end
 
-
-
-
-
-
-
--- Create small box function
-function attributes.createBoxSmall(x, y, sideLength)
-	x = x or display.contentCenterX
-	y = y or display.contentCenterY
-	sideLength = sideLength or 150
-	--make random colors (excluding green - setting to zero)
-	Red = 30
-	Green = 0
-	Blue = 150
-	local boxSmall = display.newRect( x, y, sideLength, sideLength )
-	boxSmall.strokeWidth = 10   -- Sets the width of the border of circle
-	boxSmall:setStrokeColor( Red, Green, Blue )    -- Sets the border color
-	physics.addBody( boxSmall, { friction=0.5, bounce=0.4 } )
-	boxSmall:addEventListener( "touch", shapes.moveShape )
-	boxSmall.alpha = 0.7 --circle opacity 
-	return boxSmall
-end
-
 return attributes
+
+
+
+
+
+
 
 --[[
 -------------------------------------------------------------------------------------------
