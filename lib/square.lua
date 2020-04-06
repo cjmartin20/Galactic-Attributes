@@ -24,12 +24,14 @@ function square.createSquare(x, y, sideLength)
 	boxSmall:setStrokeColor( Red, Green, Blue )    -- Sets the border color
 	physics.addBody( boxSmall, { friction=0.5, bounce=0.4 } )
 	boxSmall:addEventListener( "touch", square.move )
-    boxSmall.alpha = 0.7 --circle opacity 
-end
+	boxSmall.alpha = 0.7 --circle opacity 
+	return boxSmall
+end --createSquare function	
 
 --Move shapes function
 function square.move( event )
 
+    --event.target comes from EventListener and is the object the "touch" is targeting	
 	local object = event.target
     local touchDistance = object.width
 
