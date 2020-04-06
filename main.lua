@@ -3,23 +3,60 @@
 ---------------------------------------------------------------
 
 --change the path below to the lib directory
-local lib =  "C:\\Users\\cjmar\\Documents\\SHARED\\Software Engineering\\Lua\\AttributeBlocks\\lib\\"
+local lib =  "C:\\Users\\cjmar\\Documents\\SHARED\\Software Engineering\\Lua\\Galactic Attributes\\lib\\"
 --local lib =  ".\\lib" --trying to get this to work
 package.path = lib .. "?.lua;" .. package.path
+
+local usePhysics = require "physics"
+local useWidget = require "widget"
 local useAttributes = require "attributes"
-local setGame = require "gameSetup"
+local useGameSetup = require "gameSetup"
 local useCircle = require "circle"
 local useSquare = require "square"
+local useTriangle = require "aideTriangle"
+
+local startBackgroundText = display.newText( "Attribute Blocks!", 160, 35, "Default Font", 35 );
+
+local startBackground = useGameSetup.createStartBackground()
+
+local startButton = nil
+local mainBackground = nil
+
+local function startGame()
+	startButton:removeSelf()
+	startButton = nil
+	mainBackground = useGameSetup.gameBackground()
+end
+startButton = useGameSetup.createStartButton()
+startButton:addEventListener( "touch", startGame )
 
 
 
 
-setGame.gameBackground()
+
+
+--[[
+local group1 = {}
 useAttributes.start()
-useCircle.createCircle()
-useSquare.createSquare()
+circle1 = useCircle.createCircle()
+square1 = useSquare.createSquare()
+triangle1 = useTriangle.createTriangle()
+
+--]]
+
+
+
+
+
+
 --setGame.startMenu()
 
+--local stage = display.getCurrentStage()
+--while stage.numChildren > 0 do
+--	local obj = stage[1]
+--	obj:removeSelf()
+--	obj = nilend
+--end
 
 
 
