@@ -43,11 +43,13 @@ function circle.createCircle( x, y, rad )
     if circle.hasAttribute == nil then
         circle.hasAttribute = false
     end
+    return aCircle
 end --createCircle function
 
 --Move shapes function
 function circle.move( event )
 
+    --eventt.target comes from EventListener and is the object the "touch" is targeting
 	local object = event.target
     local touchDistance = object.width
 
