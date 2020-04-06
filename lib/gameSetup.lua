@@ -9,10 +9,15 @@ local lib =  "C:\\Users\\cjmar\\Documents\\SHARED\\Software Engineering\\Learnin
 --local lib =  ".\\lib" --trying to get this to work
 package.path = lib .. "?.lua;" .. package.path
 local useAttributes = require "attributes"
+local useCircle = require "circle"
+local useSquare = require "square"
+local useTriangle = require "aideTriangle"
 
 --function to display game background and setup boundaries
-function gameSetup.gameBackground()
-    
+function gameSetup.gameBackground( toRemove )
+
+
+
     --Display background as picture of space
     local background = display.newImageRect( ".\\lib\\images\\spacebackground1.jpg", display.contentWidth , display.contentHeight )
     background.x = display.contentCenterX
@@ -32,29 +37,29 @@ function gameSetup.gameBackground()
 
     local leftWall = display.newRect( display.contentCenterX - display.contentWidth / 2 , display.contentCenterY, 10, display.contentHeight )
     leftWall.anchorX = 1
-    physics.addBody( leftWall, "static", { bounce=1, friction=0.1 } )
+    physics.addBody( leftWall, "static", { bounce=1, friction=1 } )
     --Right Wall
     local rightWall = display.newRect( display.contentCenterX + display.contentWidth / 2, display.contentCenterY, 20, display.contentHeight )
     rightWall.anchorX = 0
-    physics.addBody( rightWall, "static", { bounce=1, friction=0.1 } )
+    physics.addBody( rightWall, "static", { bounce=1, friction=1 } )
     --Top Wall
     local topWall = display.newRect( display.contentCenterX, display.contentCenterY - display.contentHeight / 2, display.contentWidth, 20 )
     topWall.anchorY = 1
-    physics.addBody( topWall, "static", { bounce=0, friction=0 } )
+    physics.addBody( topWall, "static", { bounce=1, friction=1 } )
     --Bottom Wall
     local wallBottom = display.newRect( display.contentCenterX, display.contentCenterY + display.contentHeight / 2, display.contentWidth, 20 )
     wallBottom.anchorY = 0
-    physics.addBody( wallBottom, "static", { bounce=0.4, friction=0.6 } )
+    physics.addBody( wallBottom, "static", { bounce=1, friction=0.6 } )
 
     --display text (need to figure out how to turn sideways)
     local topText = display.newText( {
-        text = "place quadrilaterals on moon\n                 (4 sides)", --text
+        text = "place " .. useAttributes.currentAttribute .. " \n                 ()", --text
         x = display.contentCenterX, --x
-        y = 0.12 * display.contentHeight, --display.contentHeight / 30, --y 
-        width = 0.65 * display.contentWidth, --width
-        height = 0.15 * display.contentHeight, --height
+        y = 0.40 * display.contentHeight, --display.contentHeight / 30, --y 
+        width = 0.85 * display.contentWidth, --width
+        height = 0.25 * display.contentHeight, --height
         font = native.systemFont, --font
-        fontsize = 0.20 * display.contentHeight --fontsize
+        fontsize = 0.35 * display.contentHeight --fontsize
         }
     )
     local bottomText = display.newText( {
@@ -64,58 +69,37 @@ function gameSetup.gameBackground()
         width = 0.65 * display.contentWidth, --width
         height = 0.15 * display.contentHeight, --height
         font = native.systemFont, --font
-        fontsize = 0.20 * display.contentHeight --fontsize
+        fontsize = 0.5 * display.contentHeight --fontsize
         }
     )
 
-    return true
+    
+    local group1 = {}
+    useAttributes.start()
+    circle1 = useCircle.createCircle()
+    square1 = useSquare.createSquare()
+    triangle1 = useTriangle.createTriangle()
+    --group1:insert(circle1)
+    --group1:insert(square1)
+    --group1:insert(triangle1)
+
+    return group1
+    
 end 
 
 --Displays start menu and directs input to function
-function gameSetup.startMenu()
-    local widget = require( "widget" )
-
-    _W = display.contentWidth;
-    _H = display.contentHeight;
-    
-
+function gameSetup.createStartBackground()
     local background = display.newImageRect( ".\\lib\\images\\Uranus.jpg", display.contentWidth , display.contentHeight )
     background.x = display.contentCenterX
     background.y = display.contentCenterY
-    
-    local options = {
-        text = "Placeholder Game!",
-        x = 164,
-        y = 20,
-        font = native.systemFontBold, 
-        fontsize = 200
-    }
+    return background
+end
 
-    local myText = display.newText( "Attribute Blocks!", 160, 35, "Space Awaits", 35 );
-    --myText = _W * 0.5; myText.y = _H * 0.5;
-    
-    local function handleButtonEvent( event )
-        local phase = event.phase
-    
-        if "ended" == phase then
-            --local btn = event.target 
-
-            gameSetup.gameBackground()
-            useShapes.start()
-       
-        end
-    end
-    
-    local myButton = widget.newButton {
-        left = display.contentCenterX - 250,
-        top = display.contentCenterY - 250,
-        width = 500,
-        height = 500,
-        defaultFile = ".\\lib\\images\\PlayButton.png",
-        overFile = ".\\lib\\images\\PlayButton.png",
-        onEvent = handleButtonEvent
-    }
-
+function gameSetup.createStartButton()
+    local startButton = display.newImageRect( ".\\lib\\images\\PlayButton.png", 0.5 * display.contentWidth, 0.5 * display.contentHeight )
+    startButton.x = display.contentCenterX
+    startButton.y = display.contentCenterY
+    return startButton
 end
 
 return gameSetup
