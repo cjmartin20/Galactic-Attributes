@@ -6,6 +6,7 @@
 local attributes = {
 	--current attribute
 	currentAttribute = "",
+	
 
 	--shape related attributes
 	"round",
@@ -24,9 +25,8 @@ local attributes = {
 --Initializing function
 function attributes.start()
 
-	attributes.currentAttribute = "radius"
+	attributes.currentAttribute = "Aide's Triangle"
 	print("works so far")
-	--useCircle.createCircle( 500, 500, 200  )
 
 end
 
@@ -49,6 +49,16 @@ function attributes.isShapeWithinRadius( obj, radius, x, y )
 	end
 end
 
+local clock = os.clock
+
+function sleep(n)  -- seconds
+  local t0 = clock()
+  while clock() - t0 <= n do
+	print( clock() - t0 )
+  end
+end
+
+
 return attributes
 
 
@@ -65,12 +75,7 @@ return attributes
 
 
 
-function shapes.createTriangle()
-	local triangleShape = { 0,-32, 37,32, -37,32 }
-	local triangle = display.newPolygon( worldGroup, 0, 0, triangleShape )
-	physics.addBody( triangle, { friction=0.5, bounce=0.3, shape=triangleShape } )
-	return triangle
-end
+
 
 
 local function createTriangle()
