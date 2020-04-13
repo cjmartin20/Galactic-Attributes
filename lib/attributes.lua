@@ -6,8 +6,6 @@
 local attributes = {
 	--current attribute
 	currentAttribute = "",
-	
-
 	--shape related attributes
 	"round",
 	"vertices",
@@ -15,7 +13,6 @@ local attributes = {
 	"circumference",
 	"right angles",
 	"hypotenuse",
-
 	--number related attributes
 	"prime",
 	"even",
@@ -41,7 +38,7 @@ function attributes.isShapeWithinRadius( obj, radius, x, y )
 	x = (obj.x - x) * (obj.x - x) --(obj.x - x) ^ 2
 	y = (obj.y - y) * (obj.y - y) --(obj.y - y) ^ 2
 	distance = math.sqrt( x + y )
-
+	
 	if distance < radius then
 		return true
 	else
