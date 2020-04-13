@@ -1,6 +1,7 @@
 -- Create small box function
 
 square = {
+	originalStrokeColor = { Red = 0, Green = 0, Blue = 0},
     hasAttribute = nil,
     "right angles",
     "vertices",
@@ -9,20 +10,29 @@ square = {
 }
 
 local useAttributes = require "attributes"
-local usePhysics = require"physics"
+--local usePhysics = require"physics"
 
 function square.createSquare(x, y, sideLength)
 	x = x or display.contentCenterX
 	y = y or display.contentCenterY
 	sideLength = sideLength or 150
 	--make random colors (excluding green - setting to zero)
+	Red =  0
+	Green = math.random( 0, 100)
+	Blue = math.random( 30, 200)
+	local boxSmall = display.newRect( x, y, sideLength, sideLength )
+	boxSmall:setFillColor( Red, Green, Blue )
+	boxSmall.strokeWidth = 0.016 * display.contentWidth   -- Sets the width of the border
+	--Set Stroke color
 	Red = 30
 	Green = 0
 	Blue = 150
-	local boxSmall = display.newRect( x, y, sideLength, sideLength )
-	boxSmall.strokeWidth = 10   -- Sets the width of the border of circle
+	square.originalStrokeColor.Red = Red
+	square.originalStrokeColor.Green = Green
+	square.originalStrokeColor.Blue = Blue
 	boxSmall:setStrokeColor( Red, Green, Blue )    -- Sets the border color
-	physics.addBody( boxSmall, { friction=0.5, bounce=0.4 } )
+--	usePhysics.start()
+--	usePhysics.addBody( boxSmall, { friction=0.5, bounce=0.4 } )
 	boxSmall:addEventListener( "touch", square.move )
 	boxSmall.alpha = 0.7 --circle opacity 
 	return boxSmall
@@ -44,13 +54,13 @@ function square.move( event )
 	if useAttributes.isShapeWithinRadius( object, .85 * display.contentCenterX, display.contentCenterX, display.contentCenterY) then
         if square.hasAttribute then
 			--change color to green
-			object:setFillColor( 0, 128 , 0)
+			object:setStrokeColor( 0, 128 , 0)
 		else
 			--change color to red
-			object:setFillColor( 128, 0 , 0 )
+			object:setStrokeColor( 128, 0, 0 )
 		end
 	else
-		object:setFillColor( 30, 0, 150 )
+		object:setStrokeColor( square.originalStrokeColor.Red, square.originalStrokeColor.Green , square.originalStrokeColor.Blue )
     end 
 end --move function
 

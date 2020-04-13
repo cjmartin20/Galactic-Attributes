@@ -3,6 +3,7 @@
 ----------------------------------------------------------------------------------------
 
 local circle = {
+	originalStrokeColor = { Red = 0, Green = 0, Blue = 0},
     hasAttribute = nil,
     "round",
     "radius",
@@ -11,7 +12,7 @@ local circle = {
 }
 
 local useAttributes = require "attributes"
-local usePhysics = require "physics"
+
 
 
 --function createCircle displays circle object and initializes circle.hasAttrube
@@ -20,15 +21,21 @@ function circle.createCircle( x, y, rad )
 	x = x or display.contentCenterX
 	y = y or display.contentCenterY
     rad = rad or 150
-	--make random colors (excluding green - setting to zero)
+    aCircle = display.newCircle( x, y, rad )		--x-coordinate, y-coordinate, radius
+    --make random colors (excluding green - setting to zero)
+	Red = 0
+	Green = ( math.random( 0, 255) + 50 ) % 255
+	Blue = ( math.random( 0, 255) + 50 ) % 255
+	aCircle:setFillColor( Red, Green, Blue )      -- fill the circle with color
+	aCircle.strokeWidth = 0.016 * display.contentWidth   -- Sets the width of the border of circle
+	--Set Stroke color
 	Red = 30
 	Green = 0
 	Blue = 150
-	aCircle = display.newCircle( x, y, rad )		--x-coordinate, y-coordinate, radius
-	aCircle:setFillColor( Red, Green, Blue )      -- fill the circle with color
-	aCircle.strokeWidth = 10   -- Sets the width of the border of circle
-	aCircle:setStrokeColor( 128, 0, 128 )    -- Sets the border color
-	physics.addBody( aCircle, {friction = 1.0, bounce = 0.7, radius = rad, setGravity = .5 })
+	circle.originalStrokeColor.Red = Red
+	circle.originalStrokeColor.Green = Green
+	circle.originalStrokeColor.Blue = Blue
+	aCircle:setStrokeColor( Red, Green, Blue )    -- Sets the border color
     aCircle:addEventListener( "touch", circle.move )
     aCircle.alpha = 0.7 --circle opacity 
     --check if cirlce has attributes.currentAttribute (in attributes.lua table)
@@ -62,13 +69,13 @@ function circle.move( event )
 	if useAttributes.isShapeWithinRadius( object, .85 * display.contentCenterX, display.contentCenterX, display.contentCenterY) then
         if circle.hasAttribute then
 			--change color to green
-			object:setFillColor( 0, 128 , 0)
+			object:setStrokeColor( 0, 128 , 0)
 		else
 			--change color to red
-			object:setFillColor( 128, 0 , 0 )
+			object:setStrokeColor( 128, 0 , 0 )
 		end
 	else
-		object:setFillColor( 30, 0, 150 )
+		object:setStrokeColor( circle.originalStrokeColor.Red, circle.originalStrokeColor.Green, circle.originalStrokeColor.Blue )
     end 
 end --move function
 return circle
