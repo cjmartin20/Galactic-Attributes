@@ -9,10 +9,7 @@ local aidesTriangle = {
     "vertices",
     ""
 }
-
 local useAttributes = require "attributes"
---local usePhysics = require "physics"
-
 
 function aidesTriangle.createTriangle( x, y )
 
