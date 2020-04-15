@@ -4,7 +4,8 @@
 
 local circle = {
 	originalStrokeColor = { Red = 0, Green = 0, Blue = 0},
-    hasAttribute = nil,
+	hasAttribute = nil,
+	inPosition = nil,
     "round",
     "radius",
     "circumference",
@@ -74,8 +75,10 @@ function circle.move( event )
 			--change color to red
 			object:setStrokeColor( 128, 0 , 0 )
 		end
+		circle.inPosition = true
 	else
 		object:setStrokeColor( circle.originalStrokeColor.Red, circle.originalStrokeColor.Green, circle.originalStrokeColor.Blue )
-    end 
+		circle.inPosition = false
+	end 
 end --move function
 return circle

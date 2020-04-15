@@ -62,6 +62,26 @@ local gameSetup = {
     --------------------------------------------------------
     -- Main Game Play Functions
     --------------------------------------------------------
+    --[[
+    function gameSetup.checkAttributes()
+        correctObjectsOn = true
+        incorrectObjectsOff = true
+        --Loop through to check correct objects are on center
+
+        --Loop through to check incorrect objects are not center
+        if correctObjectsOn && incorrectObjectsOff then
+            --call function to give reward
+        end
+    end
+    --]]
+    function gameSetup.createNewAttributeButton()
+        local attributeButton = display.newImageRect( ".\\lib\\images\\newAttributeRocket.png", 0.3 * display.contentWidth, 0.2 * display.contentWidth )
+        attributeButton.x = 0.85 * display.contentWidth
+        attributeButton.y = 0.9 * display.contentHeight
+        gameSetup.backgroundObjects:insert( attributeButton )
+        attributeButton:addEventListener( "tap", gameSetup.newAttributes )
+        
+    end    
     function gameSetup.newAttributes ( )
         print("Number of objects : " .. gameSetup.currentObjects.numChildren )
         for i=1, gameSetup.currentObjects.numChildren do 
@@ -77,14 +97,6 @@ local gameSetup = {
 	    print( "Using ObjectSet2" )
         end
     end
-    function gameSetup.createNewAttributeButton()
-        local attributeButton = display.newImageRect( ".\\lib\\images\\newAttributeRocket.png", 0.3 * display.contentWidth, 0.2 * display.contentWidth )
-        attributeButton.x = 0.85 * display.contentWidth
-        attributeButton.y = 0.9 * display.contentHeight
-        gameSetup.backgroundObjects:insert( attributeButton )
-        attributeButton:addEventListener( "tap", gameSetup.newAttributes )
-        
-    end    
     function gameSetup.gameBackground( )
         --Display background as picture of space
         local background = display.newImageRect( ".\\lib\\images\\spacebackground1.jpg", display.contentWidth , display.contentHeight )

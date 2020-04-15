@@ -2,7 +2,8 @@
 
 square = {
 	originalStrokeColor = { Red = 0, Green = 0, Blue = 0},
-    hasAttribute = nil,
+	hasAttribute = nil,
+	inPosition = nil,
     "right angles",
     "vertices",
     "4 sides",
@@ -59,8 +60,10 @@ function square.move( event )
 			--change color to red
 			object:setStrokeColor( 128, 0, 0 )
 		end
+		square.inPosition = true
 	else
 		object:setStrokeColor( square.originalStrokeColor.Red, square.originalStrokeColor.Green , square.originalStrokeColor.Blue )
+		square.inPosition = false
     end 
 end --move function
 

@@ -5,6 +5,7 @@
 local aidesTriangle = {
 	originalStrokeColor = { Red = 0, Green = 0, Blue = 0},
     hasAttribute = nil,
+    inPosition = nil,
     "Aide's Triangle",
     "vertices",
     ""
@@ -68,9 +69,11 @@ function aidesTriangle.move( event )
 		else
 			--change color to red
 			object:setStrokeColor( 128, 0 , 0 )
-		end
+        end
+        aidesTriangle.inPosition = true
 	else
-		object:setStrokeColor( aidesTriangle.originalStrokeColor.Red, aidesTriangle.originalStrokeColor.Green , aidesTriangle.originalStrokeColor.Blue )
+        object:setStrokeColor( aidesTriangle.originalStrokeColor.Red, aidesTriangle.originalStrokeColor.Green , aidesTriangle.originalStrokeColor.Blue )
+        aidesTriangle.inPosition = false
     end 
 end --move function
 return aidesTriangle
