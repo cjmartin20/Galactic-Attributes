@@ -1,68 +1,71 @@
--- Create small box function
+-----------------------------------------------------------------------
+-- square.lua	Creates Square Object
+-----------------------------------------------------------------------
 
-square = {
-	originalStrokeColor = { Red = 0, Green = 0, Blue = 0},
+local square = {
+	originalColor = { Red = 0, Green = 0, Blue = 0},
 	hasAttribute = nil,
 	inPosition = nil,
+	"square",
     "right angles",
     "vertices",
     "4 sides",
-    "4 vertices"
+	"4 vertices",
+	"polygon"
 }
-
 local useAttributes = require "attributes"
---local usePhysics = require"physics"
-
-function square.createSquare(x, y, sideLength)
+function square.createSquare(x, y, sideLength, currentAttribute )
 	x = x or display.contentCenterX
 	y = y or display.contentCenterY
 	sideLength = sideLength or 150
-	--make random colors (excluding green - setting to zero)
 	Red =  0
-	Green = math.random( 0, 100)
-	Blue = math.random( 30, 200)
+	Green = 50
+	Blue = 50
+	square.originalColor.Red = Red
+	square.originalColor.Green = Green
+	square.originalColor.Blue = Blue
 	local boxSmall = display.newRect( x, y, sideLength, sideLength )
 	boxSmall:setFillColor( Red, Green, Blue )
 	boxSmall.strokeWidth = 0.016 * display.contentWidth   -- Sets the width of the border
+	boxSmall:setStrokeColor( 128, 0, 128 )    -- Sets the border color
 	--Set Stroke color
-	Red = 30
-	Green = 0
-	Blue = 150
-	square.originalStrokeColor.Red = Red
-	square.originalStrokeColor.Green = Green
-	square.originalStrokeColor.Blue = Blue
-	boxSmall:setStrokeColor( Red, Green, Blue )    -- Sets the border color
---	usePhysics.start()
---	usePhysics.addBody( boxSmall, { friction=0.5, bounce=0.4 } )
 	boxSmall:addEventListener( "touch", square.move )
-	boxSmall.alpha = 0.7 --circle opacity 
+	boxSmall.alpha = 0.7 --opacity 
+	print( "Checking Square Attributes" )
+	local test = false
+    for index, attribute in ipairs(square) do
+        print("checking ", index, attribute)
+        if attribute == currentAttribute then
+            test = true
+            print("Square Has Attribute")
+        end
+	end
+	square.hasAttribute = test
+	--initialize attributes.hasAttribute if no value set it to true
 	return boxSmall
 end --createSquare function	
-
 --Move shapes function
 function square.move( event )
-
     --event.target comes from EventListener and is the object the "touch" is targeting	
 	local object = event.target
     local touchDistance = object.width
-
 	--Move shape
 	if math.abs( object.x - event.x ) < touchDistance and math.abs( object.y - event.y ) < touchDistance then
 		object.x = event.x
 		object.y = event.y
     end
-    --Change color if circle is in moon and has attribute
+    --Change color if square is in position and has attribute
 	if useAttributes.isShapeWithinRadius( object, .85 * display.contentCenterX, display.contentCenterX, display.contentCenterY) then
-        if square.hasAttribute then
+        if square.hasAttribute == true then
 			--change color to green
-			object:setStrokeColor( 0, 128 , 0)
+			object:setFillColor( 0, 128 , 0)
 		else
 			--change color to red
-			object:setStrokeColor( 128, 0, 0 )
+			object:setFillColor( 128, 0, 0 )
 		end
 		square.inPosition = true
 	else
-		object:setStrokeColor( square.originalStrokeColor.Red, square.originalStrokeColor.Green , square.originalStrokeColor.Blue )
+		object:setFillColor( square.originalColor.Red, square.originalColor.Green , square.originalColor.Blue )
 		square.inPosition = false
     end 
 end --move function
