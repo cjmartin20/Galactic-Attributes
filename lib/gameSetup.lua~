@@ -289,7 +289,7 @@ local gameSetup = {
     function gameSetup.createObjectSet1()
         local currentAttribute = "4 sides" 
         local topText = display.newText( {
-            text = ("Place objects with attribute \n   \"" .. currentAttribute .. "\" on the center!\n(correct shapes turn green)"), --text
+            text = ("Place objects with attribute \n   \"" .. currentAttribute .. "\" on the center!\n  (correct shapes turn green)"), --text
             x = 0.65 * display.contentWidth, --x
             y = 0.18 * display.contentHeight, --display.contentHeight / 30, --y 
             width = 0.8 * display.contentWidth, --width
