@@ -49,8 +49,6 @@ local gameSetup = {
         startButton.y = 0.6 * display.contentHeight
         gameSetup.buttons:insert( startButton )
         startButton:addEventListener( "tap", gameSetup.startGame )
-
-  
     end
     function gameSetup.startGame( event )
         button = event.target
@@ -69,7 +67,6 @@ local gameSetup = {
         gameSetup.menuButton()
         gameSetup.createObjectSet1()
     end
-
     --------------------------------------------------------
     -- Main Game Play Functions
     --------------------------------------------------------
