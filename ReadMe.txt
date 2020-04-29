@@ -17,3 +17,4 @@ To Run Program :
 		Navigate to directory where main.lua is located and open it
 		The game should should automatically start
 To change the type of device being simulated go to top of simulator "view" > "view as" 
+The testing was done using 'IphoneX'
