@@ -1,5 +1,5 @@
 ------------------------------------------------------------------------------------------
---gameSetup.lua     Creates messeges and feedback for user
+--gameSetup.lua     Manages main functionality of program
 ------------------------------------------------------------------------------------------
 local gameSetup = {
     

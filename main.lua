@@ -4,7 +4,7 @@
 
 --change the path below to the lib directory
 --change the path below to the lib directory
-local curDir =  'C:\\Users\\cjmar\\Documents\\SHARED\\Software Engineering\\Lua\\Galactic Attributes\\'
+local curDir =  'C:\\Users\\cjmar\\Documents\\SHARED\\x_Github\\Galactic-Attributes\\'
 package.path = curDir .. 'lib\\?.lua;' .. package.path
 
 local useGameSetup = require "gameSetup"
