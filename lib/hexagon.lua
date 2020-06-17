@@ -14,10 +14,11 @@ local hexagon = {
 local useAttributes = require "attributes"
 --function createCircle displays hexagon object and initializes hexagon.hasAttrube
 --based on currentAttribute in shapes.lua.
-function hexagon.createHexagon( x, y, currentAttribute )
+function hexagon.createHexagon( x, y, scaler, currentAttribute )
 	x = x or display.contentCenterX
 	y = y or display.contentCenterY
-	local hexagonShape = { 0,-152, 132,-76, 132,76, 0,152, -132,76, -132,-76 }
+	scaler = scaler or 1
+	local hexagonShape = { 0,-152*scaler, 132*scaler,-76*scaler, 132*scaler,76*scaler, 0,152*scaler, -132*scaler,76*scaler, -132*scaler,-76*scaler }
 	local aHexagon = display.newPolygon( 0, 0, hexagonShape )
 	Red = 7
 	Green = 5
