@@ -12,10 +12,11 @@ local aidesTriangle = {
     "polygon"
 }
 local useAttributes = require "attributes"
-function aidesTriangle.createTriangle( x, y, currentAttribute )
+function aidesTriangle.createTriangle( x, y, scaler, currentAttribute )
     x = x or display.contentCenterX
     y = y or display.contentCenterY
-	local triangleShape = { 0,-100, 130,100, -130,100 }
+    scaler = scaler or 1
+	local triangleShape = { 0,-100*scaler, 130*scaler,100*scaler, -130*scaler,100*scaler }
 	local aTriangle = display.newPolygon( 350, 500, triangleShape )
     physics.addBody( aTriangle, { friction=0.5, bounce=0.3, shape=triangleShape } )
     Red = 25
