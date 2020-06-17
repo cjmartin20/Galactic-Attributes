@@ -3,35 +3,36 @@
 ----------------------------------------------------------------------------------------
 
 local one = {
-	originalColor = { Red = 0, Green = 0, Blue = 0},
+	originalColor = { Red = 0, Green = 0, Blue = 0 },
 	hasAttribute = nil,
 	inPosition = nil,
 	"one",
     "odd"
 }
 local useAttributes = require "attributes"
---function createCircle displays hexagon object and initializes hexagon.hasAttrube
+--function createCircle displays one object and initializes one.hasAttrube
 --based on currentAttribute in shapes.lua.
-function hexagon.createHexagon( x, y, currentAttribute )
+function one.createOne( x, y, scaler, currentAttribute )
 	x = x or display.contentCenterX
     y = y or display.contentCenterY
-    scaler = 1
-    local oneShape = { -15*scaler,35*scaler, -20*scaler,35*scaler, -20*scaler,45*scaler, -15*scaler,50*scaler, 15*scaler,50*scaler, 15*scaler,-40*scaler, 25*scaler,-40*scaler, 25*scaler,-50*scaler, -25*scaler,-50*scaler, -25*scaler,-40*scaler, -15*scaler,-40*scaler}
+    scaler = scaler or 8
+    --coordinates to make shape of one
+    local oneShape = { -8*scaler,-20*scaler, -14*scaler,-20*scaler, -14*scaler,-27*scaler, -8*scaler,-30*scaler, 8*scaler,-30*scaler, 8*scaler,24*scaler, 17*scaler,24*scaler, 17*scaler,30*scaler, -17*scaler,30*scaler, -17*scaler,24*scaler, -8*scaler,24*scaler}
 	local aOne = display.newPolygon( 0, 0, oneShape )
 	Red = 7
 	Green = 5
 	Blue = 0
-	hexagon.originalColor.Red = Red
-	hexagon.originalColor.Green = Green
-	hexagon.originalColor.Blue = Blue
-	aHexagon:setFillColor( Red, Green, Blue )      -- fill the hexagon with color
-	aHexagon.strokeWidth = 0.016 * display.contentWidth   -- Sets the width of the border of hexagon
+	one.originalColor.Red = Red
+	one.originalColor.Green = Green
+	one.originalColor.Blue = Blue
+	aOne:setFillColor( Red, Green, Blue )      -- fill the one with color
+    aOne.strokeWidth = 0.016 * display.contentWidth   -- Sets the width of the border of one
 	--Set Stroke color
-	aHexagon:setStrokeColor( 128, 0, 128 )    -- Sets the border color
-    aHexagon:addEventListener( "touch", one.move )
-    aHexagon.alpha = 0.7 --hexagon opacity 
-	--check if hexagon has attributes.currentAttribute (in attributes.lua table)
-	print( "Checking Hexagon Attributes" )
+    aOne:setStrokeColor( 128, 0, 128 )    -- Sets the border color
+    aOne:addEventListener( "touch", one.move )
+    aOne.alpha = 0.7 --one opacity 
+	--check if one has attributes.currentAttribute (in attributes.lua table)
+	print( "Checking one Attributes" )
 	local test = false
     for index, attribute in ipairs(one) do
         print("checking ", index, attribute)
@@ -54,7 +55,7 @@ function one.move( event )
 		object.x = event.x
 		object.y = event.y
     end
-    --Change color if hexagon is in position and has attribute
+    --Change color if one is in position and has attribute
 	if useAttributes.isShapeWithinRadius( object, .85 * display.contentCenterX, display.contentCenterX, display.contentCenterY) then
         if one.hasAttribute then
 			--change color to green
