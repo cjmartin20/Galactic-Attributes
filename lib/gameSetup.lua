@@ -27,6 +27,9 @@ local gameSetup = {
     local useSquare = require "square"
     local useTriangle = require "aidesTriangle"
     local useHexagon = require "hexagon"
+
+    local useOne = require "one"
+    local useThree = require "three"
     --Start Menu Functions
     function gameSetup.createStartBackground()
         --remove all background objects
@@ -294,7 +297,9 @@ local gameSetup = {
             font = native.systemFont --font
             --fontsize = 0.8 * display.contentHeight --fontsize
             }
-        )  
+        )
+        --local one1 = useOne.createOne( 700, 700, 0.15 * display.contentWidth, currentAttribute )
+        local three1 = useThree.createThree( 700, 700, 50, currentAttribute )
         local circle1 = useCircle.createCircle( leftX, 0.65 * display.contentHeight, 0.15 * display.contentWidth, currentAttribute )
         local circle2 = useCircle.createCircle( centerX, 0.75 * display.contentHeight, 0.12 * display.contentWidth, currentAttribute )
         local square1 = useSquare.createSquare( rightX, 0.45 * display.contentHeight, 0.25 * display.contentWidth, currentAttribute )
