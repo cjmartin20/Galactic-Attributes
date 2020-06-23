@@ -10,7 +10,14 @@
     local useHexagon = require "hexagon"
 
     local useOne = require "one"
+    local useTwo = require "two"
     local useThree = require "three"
+    local useFour = require "four"
+    local useFive = require "five"
+    local useSix = require "six"
+    local useSeven = require "seven"
+    local useEight = require "eight"
+    local useNine = require "nine"
     -- Different Object Sets
     local leftX = 0.15 * display.contentWidth
     local centerX = 0.5 * display.contentWidth
@@ -66,13 +73,21 @@
             --fontsize = 0.8 * display.contentHeight --fontsize
             }
         )
-        --local one1 = useOne.createOne( 700, 700, 0.15 * display.contentWidth, currentAttribute )
-        local three1 = useThree.createThree( 700, 700, 50, currentAttribute )
+        local one1 = useOne.createOne( 700, 300, 20, currentAttribute )
+        local two1 = useTwo.createTwo( centerX, bottomY, 20, currentAttribute )
+        local three1 = useThree.createThree( 200, 700, 20, currentAttribute )
+        local four1 = useFour.createFour( 800, 1000, 20, currentAttribute )
+        local five1 = useFive.createFive( bottomX, rightX, 20, currentAttribute )
+        local six1 = useSix.createSix( 700, 700, 20, currentAttribute )
+        local seven1 = useSeven.createSeven( 550, 900, 20, currentAttribute )
+        local eight1 = useEight.createEight( centerX, centerY, 20, currentAttribute )
+        local nine1 = useNine.createNine( 400, 200, 20, currentAttribute )
+        --[[
         local circle1 = useCircle.createCircle( leftX, 0.65 * display.contentHeight, 0.15 * display.contentWidth, currentAttribute )
         local circle2 = useCircle.createCircle( centerX, 0.75 * display.contentHeight, 0.12 * display.contentWidth, currentAttribute )
         local square1 = useSquare.createSquare( rightX, 0.45 * display.contentHeight, 0.25 * display.contentWidth, currentAttribute )
         local square2 = useSquare.createSquare( leftX, bottomY, 0.22 * display.contentWidth, currentAttribute )
-        local triangle1 = useTriangle.createTriangle( middleX, bottomY, currentAttribute )     
+        local triangle1 = useTriangle.createTriangle( middleX, bottomY, 20, currentAttribute )     
 	    --add "Physics" to all objects
         physics.addBody( circle1, { bounce=1, friction=1, radius = 0.175 * display.contentWidth } )
         physics.addBody( circle2, { bounce=1, friction=1, radius = 0.175 * display.contentWidth } )
@@ -87,12 +102,11 @@
         currentObjects:insert( square2 )
         currentObjects:insert( triangle1 )
         print("Number of objects : " .. currentObjects.numChildren )
-
+        --]]
         return currentObjects
     end	--end createObjectSet1
-    --[[
     function createObjectSet2()
-        local currentAttribute = "triangle" 
+        local currentAttribute = "triangle"
         local topText = display.newText( {
             text = ("Place objects with attribute \n   \"" .. currentAttribute .. "\" on the center!"), --text
             x = 0.65 * display.contentWidth, --x
@@ -315,5 +329,4 @@
         currentObjects:insert( triangle1 )
         print("Number of objects : " .. currentObjects.numChildren )
     end	--end createObjectSet8
-    --]]
 return objectSets
