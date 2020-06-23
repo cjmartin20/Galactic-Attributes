@@ -20,9 +20,11 @@ local gameSetup = {
 
 }
 
-    --Function to display start menu
-    local lib =  "C:\\Users\\cjmar\\Documents\\SHARED\\Software Engineering\\Learning Modules\\AttributeBlocks\\lib\\"
-    package.path = lib .. "?.lua;" .. package.path
+    local curDir =  'C:\\Users\\cjmar\\Documents\\SHARED\\x_Github\\Galactic-Attributes\\'
+    package.path = curDir .. 'lib\\?.lua;' .. package.path
+    package.path = curDir .. 'lib\\numbers\\?.lua;' .. package.path
+    package.path = curDir .. 'lib\\shapes\\?.lua;' .. package.path
+
     local useObjectSets = require "objectSets"
 
     --Start Menu Functions
