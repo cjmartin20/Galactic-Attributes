@@ -42,7 +42,7 @@ function nine.createNine( x, y, scaler, currentAttribute )
 	nine.hasAttribute = test
     --initialize attributes.hasAttribute if no value set it to true
     return anine
-end --createCircle function
+end --createNine function
 --Move shapes function
 function nine.move( event )
     --eventt.target comes from EventListener and is the object the "touch" is targeting

@@ -7,7 +7,8 @@ local four = {
 	hasAttribute = nil,
 	inPosition = nil,
 	"four",
-    "odd"
+	"even",
+	"divisible by two"
 }
 local useAttributes = require "attributes"
 function four.createFour( x, y, scaler, currentAttribute )
@@ -42,7 +43,7 @@ function four.createFour( x, y, scaler, currentAttribute )
 	four.hasAttribute = test
     --initialize attributes.hasAttribute if no value set it to true
     return afour
-end --createCircle function
+end --createFour function
 --Move shapes function
 function four.move( event )
     --eventt.target comes from EventListener and is the object the "touch" is targeting

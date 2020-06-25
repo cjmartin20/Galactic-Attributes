@@ -7,7 +7,7 @@ local two = {
 	hasAttribute = nil,
 	inPosition = nil,
 	"two",
-	"odd",
+	"even",
 	"prime"
 }
 local useAttributes = require "attributes"

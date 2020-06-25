@@ -7,7 +7,8 @@ local eight = {
 	hasAttribute = nil,
 	inPosition = nil,
 	"eight",
-    "odd"
+	"even",
+	"divisible by two"
 }
 local useAttributes = require "attributes"
 function eight.createEight( x, y, scaler, currentAttribute )
@@ -42,7 +43,7 @@ function eight.createEight( x, y, scaler, currentAttribute )
 	eight.hasAttribute = test
     --initialize attributes.hasAttribute if no value set it to true
     return aeight
-end --createCircle function
+end --createEight function
 --Move shapes function
 function eight.move( event )
     --eventt.target comes from EventListener and is the object the "touch" is targeting

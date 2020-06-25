@@ -45,7 +45,7 @@ function three.createThree( x, y, scaler, currentAttribute )
 	three.hasAttribute = test
     --initialize attributes.hasAttribute if no value set it to true
     return aThree
-end --createCircle function
+end --createThree function
 --Move shapes function
 function three.move( event )
     --eventt.target comes from EventListener and is the object the "touch" is targeting

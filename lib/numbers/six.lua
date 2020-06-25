@@ -7,7 +7,8 @@ local six = {
 	hasAttribute = nil,
 	inPosition = nil,
 	"six",
-    "odd"
+	"even",
+	"divisible by two"
 }
 local useAttributes = require "attributes"
 function six.createSix( x, y, scaler, currentAttribute )
@@ -42,7 +43,7 @@ function six.createSix( x, y, scaler, currentAttribute )
 	six.hasAttribute = test
     --initialize attributes.hasAttribute if no value set it to true
     return asix
-end --createCircle function
+end --createSix function
 --Move shapes function
 function six.move( event )
     --eventt.target comes from EventListener and is the object the "touch" is targeting

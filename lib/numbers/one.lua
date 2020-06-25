@@ -15,8 +15,8 @@ function one.createOne( x, y, scaler, currentAttribute )
     y = y or display.contentCenterY
     scaler = scaler or 8
     --coordinates to make shape of one
-    local oneShape = { -8*scaler,-20*scaler, -14*scaler,-20*scaler, -14*scaler,-27*scaler, -8*scaler,-30*scaler, 8*scaler,-30*scaler, 8*scaler,24*scaler, 17*scaler,24*scaler, 17*scaler,30*scaler, -17*scaler,30*scaler, -17*scaler,24*scaler, -8*scaler,24*scaler}
-	local aOne = display.newPolygon( 0, 0, oneShape )
+    local oneShape = { 3*scaler,-11*scaler, 1*scaler,-10*scaler, 0,-7*scaler, 4*scaler,-7*scaler, 1*scaler,5*scaler, -2*scaler,5*scaler, -3*scaler,9*scaler, 7*scaler,9*scaler, 8*scaler,5*scaler, 5*scaler,5*scaler, 9*scaler,-11*scaler }
+	local aOne = display.newPolygon( x, y, oneShape )
 	Red = 7
 	Green = 5
 	Blue = 0
@@ -24,7 +24,7 @@ function one.createOne( x, y, scaler, currentAttribute )
 	one.originalColor.Green = Green
 	one.originalColor.Blue = Blue
 	aOne:setFillColor( Red, Green, Blue )      -- fill the one with color
-    aOne.strokeWidth = 0.016 * display.contentWidth   -- Sets the width of the border of one
+    --aOne.strokeWidth = 0.016 * display.contentWidth   -- Sets the width of the border of one
 	--Set Stroke color
     aOne:setStrokeColor( 128, 0, 128 )    -- Sets the border color
     aOne:addEventListener( "touch", one.move )
@@ -42,7 +42,7 @@ function one.createOne( x, y, scaler, currentAttribute )
 	one.hasAttribute = test
     --initialize attributes.hasAttribute if no value set it to true
     return aOne
-end --createCircle function
+end --createOne function
 --Move shapes function
 function one.move( event )
     --eventt.target comes from EventListener and is the object the "touch" is targeting
