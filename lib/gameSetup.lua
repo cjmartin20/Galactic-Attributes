@@ -68,16 +68,8 @@ local gameSetup = {
         useObjectSets.createObjectSet1()
     end
     --------------------------------------------------------
-    -- Main Game Play Functions
+    -- Buttons
     --------------------------------------------------------
-    function gameSetup.createNewAttributeButton()
-        local attributeButton = display.newImageRect( ".\\lib\\images\\newAttributeButton.png", 0.6 * display.contentWidth, 0.3 * display.contentWidth )
-        attributeButton.x = display.contentCenterX
-        attributeButton.y = 0.2 * display.contentHeight
-        gameSetup.buttons:insert( attributeButton )
-        attributeButton:addEventListener( "tap", gameSetup.newAttributes )
-
-    end
     function gameSetup.menuButton()
         local menuButton = display.newImageRect( ".\\lib\\images\\menu.png", 0.35 * display.contentWidth, 0.1 * display.contentHeight)
         menuButton.x = 0.8 * display.contentWidth
@@ -95,7 +87,7 @@ local gameSetup = {
         for i=1, gameSetup.buttons.numChildren do 
             display.remove( gameSetup.buttons[ 1 ])
         end    
-        gameSetup.createNewAttributeButton()
+        gameSetup.newAttributeButton()
         gameSetup.changeThemeButton()
         gameSetup.returnButton()
     end
@@ -149,7 +141,14 @@ local gameSetup = {
         end
         gameSetup.menuButton()
     end
-    function gameSetup.newAttributes()
+    function gameSetup.newAttributeButton()
+        local attributeButton = display.newImageRect( ".\\lib\\images\\newAttributeButton.png", 0.6 * display.contentWidth, 0.3 * display.contentWidth )
+        attributeButton.x = display.contentCenterX
+        attributeButton.y = 0.2 * display.contentHeight
+        gameSetup.buttons:insert( attributeButton )
+        attributeButton:addEventListener( "tap", gameSetup.newAttribute )
+    end
+    function gameSetup.newAttribute()
         print("Number of objects : " .. gameSetup.currentObjects.numChildren )
         --remove all temporary objects
         for i=1, gameSetup.tempObjects.numChildren do 
@@ -246,8 +245,4 @@ local gameSetup = {
         gameSetup.backgroundObjects:insert( background )
         gameSetup.backgroundObjects:insert( center )
     end --end gameBackground3
-
-
-
-
 return gameSetup --end gameSetup 
