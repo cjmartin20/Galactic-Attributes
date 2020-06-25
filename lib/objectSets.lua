@@ -5,9 +5,9 @@
     local lib =  "C:\\Users\\cjmar\\Documents\\SHARED\\Software Engineering\\Learning Modules\\AttributeBlocks\\lib\\"
     package.path = lib .. "?.lua;" .. package.path
     local useCircle = require "circle"
+    local useHexagon = require "hexagon"
     local useSquare = require "square"
     local useTriangle = require "aidesTriangle"
-    local useHexagon = require "hexagon"
 
     local useOne = require "one"
     local useTwo = require "two"
@@ -62,25 +62,25 @@
 
         currentObjects = display.newGroup()
 
-        local currentAttribute = "4 sides" 
+        local currentAttribute = "prime" 
         local topText = display.newText( {
-            text = ("Place objects with attribute \n   \"" .. currentAttribute .. "\" on the center!\n(correct shapes turn green)"), --text
+            text = ("Objects with attribute \"" .. currentAttribute .. "\""), --text
             x = 0.65 * display.contentWidth, --x
             y = 0.18 * display.contentHeight, --display.contentHeight / 30, --y 
             width = 0.8 * display.contentWidth, --width
             height = 0.25 * display.contentHeight, --height
-            font = native.systemFont --font
-            --fontsize = 0.8 * display.contentHeight --fontsize
+            font = native.systemFont, --font
+            fontSize = 70--0.8 * display.contentHeight --fontsize
             }
         )
-        local one1 = useOne.createOne( 700, 300, 20, currentAttribute )
+        local one1 = useOne.createOne( centerX, centerY, 20, currentAttribute )
         local two1 = useTwo.createTwo( centerX, bottomY, 20, currentAttribute )
         local three1 = useThree.createThree( 200, 700, 20, currentAttribute )
         local four1 = useFour.createFour( 800, 1000, 20, currentAttribute )
         local five1 = useFive.createFive( bottomX, rightX, 20, currentAttribute )
         local six1 = useSix.createSix( 700, 700, 20, currentAttribute )
         local seven1 = useSeven.createSeven( 550, 900, 20, currentAttribute )
-        local eight1 = useEight.createEight( centerX, centerY, 20, currentAttribute )
+        local eight1 = useEight.createEight( centerX, 1000, 20, currentAttribute )
         local nine1 = useNine.createNine( 400, 200, 20, currentAttribute )
         --[[
         local circle1 = useCircle.createCircle( leftX, 0.65 * display.contentHeight, 0.15 * display.contentWidth, currentAttribute )
@@ -146,7 +146,7 @@
             width = 0.8 * display.contentWidth, --width
             height = 0.25 * display.contentHeight, --height
             font = native.systemFont --font
-            --fontsize = 0.8 * display.contentHeight --fontsize
+            --fontsize = 0.8 * display.contentHeight --fontsi
             }
         )  
         local circle1 = useCircle.createCircle( leftX, bottomY, 0.175 * display.contentWidth, currentAttribute )
