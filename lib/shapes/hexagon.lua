@@ -17,12 +17,12 @@ local useAttributes = require "attributes"
 function hexagon.createHexagon( x, y, scaler, currentAttribute )
 	x = x or display.contentCenterX
 	y = y or display.contentCenterY
-	scaler = scaler or 1
+	scaler = scaler * 0.5 or 0.5
 	local hexagonShape = { 0,-152*scaler, 132*scaler,-76*scaler, 132*scaler,76*scaler, 0,152*scaler, -132*scaler,76*scaler, -132*scaler,-76*scaler }
 	local aHexagon = display.newPolygon( 0, 0, hexagonShape )
-	Red = 7
+	Red = 0
 	Green = 5
-	Blue = 0
+	Blue = 5
 	hexagon.originalColor.Red = Red
 	hexagon.originalColor.Green = Green
 	hexagon.originalColor.Blue = Blue

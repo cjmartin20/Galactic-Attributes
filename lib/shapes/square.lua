@@ -14,17 +14,17 @@ local square = {
 	"polygon"
 }
 local useAttributes = require "attributes"
-function square.createSquare(x, y, sideLength, currentAttribute )
+function square.createSquare(x, y, scaler, currentAttribute )
 	x = x or display.contentCenterX
 	y = y or display.contentCenterY
-	sideLength = sideLength or 150
+	scaler = scaler or 1
 	Red =  0
 	Green = 50
 	Blue = 50
 	square.originalColor.Red = Red
 	square.originalColor.Green = Green
 	square.originalColor.Blue = Blue
-	local boxSmall = display.newRect( x, y, sideLength, sideLength )
+	local boxSmall = display.newRect( x, y, scaler * 110, scaler * 110 )
 	boxSmall:setFillColor( Red, Green, Blue )
 	boxSmall.strokeWidth = 0.016 * display.contentWidth   -- Sets the width of the border
 	boxSmall:setStrokeColor( 128, 0, 128 )    -- Sets the border color
@@ -69,5 +69,4 @@ function square.move( event )
 		square.inPosition = false
     end 
 end --move function
-
 return square

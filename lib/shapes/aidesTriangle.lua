@@ -16,12 +16,12 @@ function aidesTriangle.createTriangle( x, y, scaler, currentAttribute )
     x = x or display.contentCenterX
     y = y or display.contentCenterY
     scaler = scaler or 1
-	local triangleShape = { 0,-100*scaler, 130*scaler,100*scaler, -130*scaler,100*scaler }
+	local triangleShape = { 0,-60*scaler, 78*scaler,60*scaler, -78*scaler,60*scaler }
 	local aTriangle = display.newPolygon( 350, 500, triangleShape )
     physics.addBody( aTriangle, { friction=0.5, bounce=0.3, shape=triangleShape } )
-    Red = 25
-	Green = 0
-	Blue = 50
+    Red = 0
+	Green = 5
+	Blue = 5
 	aidesTriangle.originalColor.Red = Red
 	aidesTriangle.originalColor.Green = Green
 	aidesTriangle.originalColor.Blue = Blue

@@ -15,14 +15,14 @@ local circle = {
 local useAttributes = require "attributes"
 --function createCircle displays circle object and initializes circle.hasAttrube
 --based on currentAttribute in shapes.lua.
-function circle.createCircle( x, y, rad, currentAttribute )
+function circle.createCircle( x, y, scaler, currentAttribute )
 	x = x or display.contentCenterX
 	y = y or display.contentCenterY
-    rad = rad or 150
-    aCircle = display.newCircle( x, y, rad )		--x-coordinate, y-coordinate, radius
+    scaler = scaler or 1
+    aCircle = display.newCircle( x, y, 60 * scaler )		--x-coordinate, y-coordinate, radius
 	Red = 0
-	Green = 0
-	Blue = 150
+	Green = 5
+	Blue = 5
 	circle.originalColor.Red = Red
 	circle.originalColor.Green = Green
 	circle.originalColor.Blue = Blue
