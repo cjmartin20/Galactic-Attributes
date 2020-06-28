@@ -16,8 +16,6 @@ local gameSetup = {
     currentObjects = display.newGroup(),  
     tempObjects = display.newGroup(),
     buttons = display.newGroup()
-
-
 }
     local scaler = display.contentWidth * display.contentHeight / ( 480 * 800 ) --resolution of smallest device in corona simulator
 
@@ -74,12 +72,11 @@ local gameSetup = {
     function gameSetup.directionsButton()
         local dButton = display.newImageRect( ".\\lib\\images\\directionsButton.png", 0.6 * display.contentWidth, 0.3 * display.contentWidth)
         dButton.x = display.contentCenterX
-        dButton.y = 0.8 * display.contentHeight
+        dButton.y = 0.6 * display.contentHeight
         dButton:addEventListener( "tap", gameSetup.directions )
         gameSetup.buttons:insert( dButton )
     end --directionsButton function
     function gameSetup.directions()
-
         local topText = display.newText( {
             text = ("Galactic Attributes is a small “game” that is designed for young learners to explore the idea of attributes and familiarize themselves with different numbers and shapes. An attribute will be displayed at the top of the screen, and the user moves the objects onto the center of the screen to check if they match the attribute. Objects that have the given attribute will turn green, and objects that do not will turn red."), --text
             x = display.contentCenterX, --x
@@ -96,7 +93,6 @@ local gameSetup = {
         for i=1, gameSetup.buttons.numChildren do 
             display.remove( gameSetup.buttons[ 1 ])
         end
-        --remove objects
         gameSetup.returnButton()
     end --directions function
     function gameSetup.menuButton()
@@ -197,42 +193,34 @@ local gameSetup = {
         end
         if gameSetup.objectSet == 1 then
             useObjectSets.createObjectSet1( gameSetup.currentObjects )
-            --[[
-            for i=1, newObjects.numChildren do
-                gameSetup.currentObjects:insert( newObjects[ i ])
-            end
-            for i=1, gameSetup.newObjects.numChildren do 
-                display.remove( gameSetup.newObjects[ 1 ])
-            end
-            --]]
 	        print( "Using ObjectSet1" )
         end
         if gameSetup.objectSet == 2 then
-            gameSetup.createObjectSet2()
+            useObjectSets.createObjectSet2( gameSetup.currentObjects )
 	        print( "Using ObjectSet2" )
         end
         if gameSetup.objectSet == 3 then 
-            gameSetup.createObjectSet3()
+            useObjectSets.createObjectSet3( gameSetup.currentObjects )
             print( "Using ObjectSet3" )
         end
         if gameSetup.objectSet == 4 then
-            gameSetup.createObjectSet4()
+            useObjectSets.createObjectSet4( gameSetup.currentObjects )
 	        print( "Using ObjectSet4" )
         end
         if gameSetup.objectSet == 5 then
-            gameSetup.createObjectSet5()
+            useObjectSets.createObjectSet5( gameSetup.currentObjects )
 	        print( "Using ObjectSet5" )
         end
         if gameSetup.objectSet == 6 then 
-            gameSetup.createObjectSet6()
+            useObjectSets.createObjectSet6( gameSetup.currentObjects )
             print( "Using ObjectSet6" )
         end
         if gameSetup.objectSet == 7 then
-            gameSetup.createObjectSet7()
+            useObjectSets.createObjectSet7( gameSetup.currentObjects )
 	        print( "Using ObjectSet7" )
         end
         if gameSetup.objectSet == 8 then 
-            gameSetup.createObjectSet8()
+            useObjectSets.createObjectSet8( gameSetup.currentObjects )
             print( "Using ObjectSet8" )
         end
         gameSetup.menuButton()
