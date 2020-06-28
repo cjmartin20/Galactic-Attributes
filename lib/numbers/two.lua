@@ -16,7 +16,7 @@ local useAttributes = require "attributes"
 function two.createTwo( x, y, scaler, currentAttribute )
 	x = x or display.contentCenterX
     y = y or display.contentCenterY
-    scaler = scaler or 8
+    scaler = scaler * 7 or 7
     --coordinates to make two shape
     local twoShape = { -3*scaler,-11*scaler, -4*scaler,-7*scaler, 4*scaler,-7*scaler, 3*scaler,-3*scaler, -5*scaler,-3*scaler, -8*scaler,9*scaler, 4*scaler,9*scaler, 5*scaler,5*scaler, -3*scaler,5*scaler, -2*scaler,1*scaler, 6*scaler,1*scaler, 9*scaler,-11*scaler  }
 	local atwo = display.newPolygon( x, y, twoShape )

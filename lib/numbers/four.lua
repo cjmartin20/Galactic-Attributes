@@ -14,7 +14,7 @@ local useAttributes = require "attributes"
 function four.createFour( x, y, scaler, currentAttribute )
 	x = x or display.contentCenterX
     y = y or display.contentCenterY
-    scaler = scaler or 8
+    scaler = scaler * 7 or 7
     --coordinates to make shape of four
 	local fourShape = { -3*scaler,-11*scaler, -6*scaler,1*scaler, 2*scaler,1*scaler, 1*scaler,5*scaler, 4*scaler,9*scaler, 9*scaler,-11*scaler, 4*scaler,-7*scaler, 3*scaler,-3*scaler, -1*scaler,-3*scaler, 0,-7*scaler }
 	local afour = display.newPolygon( x, y, fourShape )

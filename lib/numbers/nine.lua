@@ -13,7 +13,7 @@ local useAttributes = require "attributes"
 function nine.createNine( x, y, scaler, currentAttribute )
 	x = x or display.contentCenterX
     y = y or display.contentCenterY
-    scaler = scaler or 8
+    scaler = scaler * 7 or 7
     --coordinates to make shape of nine
 	local nineShape = { -3*scaler,-11*scaler, -6*scaler,1*scaler, 2*scaler,1*scaler, 3*scaler,-3*scaler, -1*scaler,-3*scaler, 0,-7*scaler, 4*scaler,-7*scaler, 1*scaler,5*scaler, -7*scaler,5*scaler, -8*scaler,9*scaler, 4*scaler,9*scaler, 9*scaler,-11*scaler }
 	local anine = display.newPolygon( x, y, nineShape )

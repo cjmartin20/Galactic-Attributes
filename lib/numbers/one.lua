@@ -13,7 +13,7 @@ local useAttributes = require "attributes"
 function one.createOne( x, y, scaler, currentAttribute )
 	x = x or display.contentCenterX
     y = y or display.contentCenterY
-    scaler = scaler or 8
+    scaler = scaler * 7 or 7
     --coordinates to make shape of one
     local oneShape = { 3*scaler,-11*scaler, 1*scaler,-10*scaler, 0,-7*scaler, 4*scaler,-7*scaler, 1*scaler,5*scaler, -2*scaler,5*scaler, -3*scaler,9*scaler, 7*scaler,9*scaler, 8*scaler,5*scaler, 5*scaler,5*scaler, 9*scaler,-11*scaler }
 	local aOne = display.newPolygon( x, y, oneShape )

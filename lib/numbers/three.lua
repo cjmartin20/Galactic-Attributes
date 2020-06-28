@@ -16,7 +16,7 @@ local useAttributes = require "attributes"
 function three.createThree( x, y, scaler, currentAttribute )
 	x = x or display.contentCenterX
     y = y or display.contentCenterY
-    scaler = scaler or 8
+    scaler = scaler * 7 or 7
     --coordinates to make three shape
     local threeShape = { -4*scaler,-11*scaler, -2*scaler,-7*scaler, 4*scaler,-7*scaler, 3*scaler,-3*scaler, -5*scaler,-3*scaler, -6*scaler,1*scaler, 2*scaler,1*scaler, 1*scaler,5*scaler, -5*scaler,5*scaler, -8*scaler,9*scaler, 4*scaler,9*scaler, 9*scaler,-11*scaler }
 	local aThree = display.newPolygon( x, y, threeShape )
