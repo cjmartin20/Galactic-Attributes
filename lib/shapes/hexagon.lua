@@ -12,8 +12,6 @@ local hexagon = {
 	"polygon"
 }
 local useAttributes = require "attributes"
---function createCircle displays hexagon object and initializes hexagon.hasAttrube
---based on currentAttribute in shapes.lua.
 function hexagon.createHexagon( x, y, scaler, currentAttribute )
 	x = x or display.contentCenterX
 	y = y or display.contentCenterY
@@ -45,7 +43,7 @@ function hexagon.createHexagon( x, y, scaler, currentAttribute )
 	hexagon.hasAttribute = test
     --initialize attributes.hasAttribute if no value set it to true
     return aHexagon
-end --createCircle function
+end --createHexagon function
 --Move shapes function
 function hexagon.move( event )
     --eventt.target comes from EventListener and is the object the "touch" is targeting
