@@ -18,13 +18,15 @@
     local useSeven = require "seven"
     local useEight = require "eight"
     local useNine = require "nine"
-    -- Different Object Sets
+
     local leftX = 0.15 * display.contentWidth
     local centerX = 0.5 * display.contentWidth
     local rightX = 0.85 * display.contentWidth
     local topY = 0.10 * display.contentHeight
     local centerY = 0.5 * display.contentHeight
     local bottomY = 0.90 * display.contentHeight
+
+    local scaler = display.contentWidth * display.contentHeight / ( 480 * 800 ) --resolution of smallest device in corona simulator
 
     function objectSets.createWalls()
 
@@ -58,9 +60,9 @@
         return walls
     end --end createWalls
 
-    function objectSets.createObjectSet1()
+    function objectSets.createObjectSet1( currentObjects )
 
-        currentObjects = display.newGroup()
+        --currentObjects = display.newGroup()
 
         local currentAttribute = "prime" 
         local topText = display.newText( {
@@ -70,9 +72,11 @@
             width = 0.8 * display.contentWidth, --width
             height = 0.25 * display.contentHeight, --height
             font = native.systemFont, --font
-            fontSize = 70--0.8 * display.contentHeight --fontsize
+            fontSize = 20 * scaler--0.8 * display.contentHeight --fontsize
+            --align = "center"
             }
         )
+        --[[
         local one1 = useOne.createOne( centerX, centerY, 20, currentAttribute )
         local two1 = useTwo.createTwo( centerX, bottomY, 20, currentAttribute )
         local three1 = useThree.createThree( 200, 700, 20, currentAttribute )
@@ -82,7 +86,7 @@
         local seven1 = useSeven.createSeven( 550, 900, 20, currentAttribute )
         local eight1 = useEight.createEight( centerX, 1000, 20, currentAttribute )
         local nine1 = useNine.createNine( 400, 200, 20, currentAttribute )
-        --[[
+        --]]
         local circle1 = useCircle.createCircle( leftX, 0.65 * display.contentHeight, 0.15 * display.contentWidth, currentAttribute )
         local circle2 = useCircle.createCircle( centerX, 0.75 * display.contentHeight, 0.12 * display.contentWidth, currentAttribute )
         local square1 = useSquare.createSquare( rightX, 0.45 * display.contentHeight, 0.25 * display.contentWidth, currentAttribute )
@@ -95,15 +99,15 @@
         physics.addBody( square2, { bounce=1, friction=1, radius = 0.175 * display.contentWidth } )
         physics.addBody( triangle1, { bounce=1, friction=1, radius = 0.175 * display.contentWidth } )
     --insert objects in to currentObjects group
-        currentObjects:insert( topText) 
+        currentObjects:insert( topText ) 
         currentObjects:insert( circle1 ) 
         currentObjects:insert( circle2 )
         currentObjects:insert( square1 )
         currentObjects:insert( square2 )
         currentObjects:insert( triangle1 )
         print("Number of objects : " .. currentObjects.numChildren )
-        --]]
-        return currentObjects
+
+        --return currentObjects
     end	--end createObjectSet1
     function createObjectSet2()
         local currentAttribute = "triangle"
