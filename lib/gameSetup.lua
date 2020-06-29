@@ -17,7 +17,7 @@ local gameSetup = {
     tempObjects = display.newGroup(),
     buttons = display.newGroup()
 }
-    local scaler = display.contentWidth * display.contentHeight / ( 480 * 800 ) --resolution of smallest device in corona simulator
+    local scaler = (display.contentWidth / 480 + display.contentHeight / 800 ) / 2 --resolution of smallest device in corona simulator
 
     local curDir =  'C:\\Users\\cjmar\\Documents\\SHARED\\x_Github\\Galactic-Attributes\\'
     package.path = curDir .. 'lib\\?.lua;' .. package.path
