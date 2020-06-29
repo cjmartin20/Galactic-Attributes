@@ -3,7 +3,7 @@
 ----------------------------------------------------------------------------------------
 
 local pentagon = {
-	aPentagon = nil,
+	object = nil,
 	originalColor = { Red = 0, Green = 0, Blue = 0},
 	hasAttribute = nil,
 	inPosition = nil,
@@ -19,19 +19,19 @@ function pentagon.createPentagon( x, y, scaler, currentAttribute )
 	y = y or display.contentCenterY
 	scaler = scaler * 11 or 11
 	local pentagonShape = { 0,-6*scaler, -7*scaler,-2*scaler, -4*scaler,5*scaler, 4*scaler,5*scaler, 7*scaler,-2*scaler }
-	pentagon.aPentagon = display.newPolygon( 0, 0, pentagonShape )
+	pentagon.object = display.newPolygon( 0, 0, pentagonShape )
 	Red = 0
 	Green = 5
 	Blue = 5
 	pentagon.originalColor.Red = Red
 	pentagon.originalColor.Green = Green
 	pentagon.originalColor.Blue = Blue
-	pentagon.aPentagon:setFillColor( Red, Green, Blue )      -- fill the pentagon with color
-	pentagon.aPentagon.strokeWidth = 0.016 * display.contentWidth   -- Sets the width of the border of pentagon
+	pentagon.object:setFillColor( Red, Green, Blue )      -- fill the pentagon with color
+	pentagon.object.strokeWidth = 0.016 * display.contentWidth   -- Sets the width of the border of pentagon
 	--Set Stroke color
-	pentagon.aPentagon:setStrokeColor( 128, 0, 128 )    -- Sets the border color
-    pentagon.aPentagon:addEventListener( "touch", pentagon.move )
-    pentagon.aPentagon.alpha = 0.7 --pentagon opacity 
+	pentagon.object:setStrokeColor( 128, 0, 128 )    -- Sets the border color
+    pentagon.object:addEventListener( "touch", pentagon.move )
+    pentagon.object.alpha = 0.7 --pentagon opacity 
 	--check if pentagon has attributes.currentAttribute (in attributes.lua table)
 	print( "Checking pentagon Attributes" )
 	local test = false

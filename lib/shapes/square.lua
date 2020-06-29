@@ -3,7 +3,7 @@
 -----------------------------------------------------------------------
 
 local square = {
-	aSquare = nil,
+	object = nil,
 	originalColor = { Red = 0, Green = 0, Blue = 0},
 	hasAttribute = nil,
 	inPosition = nil,
@@ -25,13 +25,13 @@ function square.createSquare(x, y, scaler, currentAttribute )
 	square.originalColor.Red = Red
 	square.originalColor.Green = Green
 	square.originalColor.Blue = Blue
-	square.aSquare = display.newRect( x, y, scaler * 110, scaler * 110 )
-	square.aSquare:setFillColor( Red, Green, Blue )
-	square.aSquare.strokeWidth = 0.016 * display.contentWidth   -- Sets the width of the border
-	square.aSquare:setStrokeColor( 128, 0, 128 )    -- Sets the border color
+	square.object = display.newRect( x, y, scaler * 110, scaler * 110 )
+	square.object:setFillColor( Red, Green, Blue )
+	square.object.strokeWidth = 0.016 * display.contentWidth   -- Sets the width of the border
+	square.object:setStrokeColor( 128, 0, 128 )    -- Sets the border color
 	--Set Stroke color
-	square.aSquare:addEventListener( "touch", square.move )
-	square.aSquare.alpha = 0.7 --opacity 
+	square.object:addEventListener( "touch", square.move )
+	square.object.alpha = 0.7 --opacity 
 	print( "Checking Square Attributes" )
 	local test = false
     for index, attribute in ipairs(square) do

@@ -3,7 +3,7 @@
 ----------------------------------------------------------------------------------------
 
 local four = {
-	aFour = nil
+	object = nil
 	originalColor = { Red = 0, Green = 0, Blue = 0 },
 	hasAttribute = nil,
 	inPosition = nil,
@@ -18,19 +18,19 @@ function four.createFour( x, y, scaler, currentAttribute )
     scaler = scaler * 7 or 7
     --coordinates to make shape of four
 	local fourShape = { -3*scaler,-11*scaler, -6*scaler,1*scaler, 2*scaler,1*scaler, 1*scaler,5*scaler, 4*scaler,9*scaler, 9*scaler,-11*scaler, 4*scaler,-7*scaler, 3*scaler,-3*scaler, -1*scaler,-3*scaler, 0,-7*scaler }
-	four.aFour = display.newPolygon( x, y, fourShape )
+	four.object = display.newPolygon( x, y, fourShape )
 	Red = 7
 	Green = 5
 	Blue = 0
 	four.originalColor.Red = Red
 	four.originalColor.Green = Green
 	four.originalColor.Blue = Blue
-	four.aFour:setFillColor( Red, Green, Blue )      -- fill the four with color
-    --four.aFour.strokeWidth = 0.016 * display.contentWidth   -- Sets the width of the border of four
+	four.object:setFillColor( Red, Green, Blue )      -- fill the four with color
+    --four.object.strokeWidth = 0.016 * display.contentWidth   -- Sets the width of the border of four
 	--Set Stroke color
-    four.aFour:setStrokeColor( 128, 0, 128 )    -- Sets the border color
-    four.aFour:addEventListener( "touch", four.move )
-    four.aFour.alpha = 0.7 --four opacity 
+    four.object:setStrokeColor( 128, 0, 128 )    -- Sets the border color
+    four.object:addEventListener( "touch", four.move )
+    four.object.alpha = 0.7 --four opacity 
 	--check if four has attributes.currentAttribute (in attributes.lua table)
 	print( "Checking four Attributes" )
 	local test = false

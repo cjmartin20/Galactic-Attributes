@@ -3,7 +3,7 @@
 -------------------------------------------------------------------
 
 local aidesTriangle = {
-    aTriangle = nil,
+    object = nil,
 	originalColor = { Red = 0, Green = 0, Blue = 0},
     hasAttribute = nil,
     inPosition = nil,
@@ -18,19 +18,19 @@ function aidesTriangle.createTriangle( x, y, scaler, currentAttribute )
     y = y or display.contentCenterY
     scaler = scaler or 1
 	local triangleShape = { 0,-60*scaler, 78*scaler,60*scaler, -78*scaler,60*scaler }
-	aidesTriangle.aTriangle = display.newPolygon( 350, 500, triangleShape )
-    physics.addBody( aidesTriangle.aTriangle, { friction=0.5, bounce=0.3, shape=triangleShape } )
+	aidesTriangle.object = display.newPolygon( 350, 500, triangleShape )
+    physics.addBody( aidesTriangle.object, { friction=0.5, bounce=0.3, shape=triangleShape } )
     Red = 0
 	Green = 5
 	Blue = 5
 	aidesTriangle.originalColor.Red = Red
 	aidesTriangle.originalColor.Green = Green
 	aidesTriangle.originalColor.Blue = Blue
-    aidesTriangle.aTriangle:setFillColor( Red, Green, Blue )      -- fill the triangle with color
-    aidesTriangle.aTriangle.strokeWidth = 0.016 * display.contentWidth   -- Sets the width of the border of the triangle
-    aidesTriangle.aTriangle:setStrokeColor( 128, 0, 128 )    -- Sets the border color
-    aidesTriangle.aTriangle:addEventListener( "touch", aidesTriangle.move )
-    aidesTriangle.aTriangle.alpha = 0.7 --circle opacity 
+    aidesTriangle.object:setFillColor( Red, Green, Blue )      -- fill the triangle with color
+    aidesTriangle.object.strokeWidth = 0.016 * display.contentWidth   -- Sets the width of the border of the triangle
+    aidesTriangle.object:setStrokeColor( 128, 0, 128 )    -- Sets the border color
+    aidesTriangle.object:addEventListener( "touch", aidesTriangle.move )
+    aidesTriangle.object.alpha = 0.7 --circle opacity 
     --check if triangle has attributes.currentAttribute (in attributes.lua table)
     print( "Checking Triangle Attributes" )
     local test = false

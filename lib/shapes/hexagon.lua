@@ -3,7 +3,7 @@
 ----------------------------------------------------------------------------------------
 
 local hexagon = {
-	aHexagon = nil,
+	object = nil,
 	originalColor = { Red = 0, Green = 0, Blue = 0},
 	hasAttribute = nil,
 	inPosition = nil,
@@ -18,19 +18,19 @@ function hexagon.createHexagon( x, y, scaler, currentAttribute )
 	y = y or display.contentCenterY
 	scaler = scaler * 0.5 or 0.5
 	local hexagonShape = { 0,-152*scaler, 132*scaler,-76*scaler, 132*scaler,76*scaler, 0,152*scaler, -132*scaler,76*scaler, -132*scaler,-76*scaler }
-	hexagon.aHexagon = display.newPolygon( 0, 0, hexagonShape )
+	hexagon.object = display.newPolygon( 0, 0, hexagonShape )
 	Red = 0
 	Green = 5
 	Blue = 5
 	hexagon.originalColor.Red = Red
 	hexagon.originalColor.Green = Green
 	hexagon.originalColor.Blue = Blue
-	hexagon.aHexagon:setFillColor( Red, Green, Blue )      -- fill the hexagon with color
-	hexagon.aHexagon.strokeWidth = 0.016 * display.contentWidth   -- Sets the width of the border of hexagon
+	hexagon.object:setFillColor( Red, Green, Blue )      -- fill the hexagon with color
+	hexagon.object.strokeWidth = 0.016 * display.contentWidth   -- Sets the width of the border of hexagon
 	--Set Stroke color
-	hexagon.aHexagon:setStrokeColor( 128, 0, 128 )    -- Sets the border color
-    hexagon.aHexagon:addEventListener( "touch", hexagon.move )
-    hexagon.aHexagon.alpha = 0.7 --hexagon opacity 
+	hexagon.object:setStrokeColor( 128, 0, 128 )    -- Sets the border color
+    hexagon.object:addEventListener( "touch", hexagon.move )
+    hexagon.object.alpha = 0.7 --hexagon opacity 
 	--check if hexagon has attributes.currentAttribute (in attributes.lua table)
 	print( "Checking Hexagon Attributes" )
 	local test = false

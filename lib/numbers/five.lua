@@ -3,7 +3,7 @@
 ----------------------------------------------------------------------------------------
 
 local five = {
-	aFive = nil,
+	object = nil,
 	originalColor = { Red = 0, Green = 0, Blue = 0 },
 	hasAttribute = nil,
 	inPosition = nil,
@@ -20,19 +20,19 @@ function five.createFive( x, y, scaler, currentAttribute )
     scaler = scaler * 7 or 7
     --coordinates to make five shape
     local fiveShape = { -3*scaler,-11*scaler, -6*scaler,1*scaler, 2*scaler,1*scaler, 1*scaler,5*scaler, -7*scaler,5*scaler, -8*scaler,9*scaler, 4*scaler,9*scaler, 7*scaler,-3*scaler, -1*scaler,-3*scaler, 0,-7*scaler, 8*scaler,-7*scaler, 9*scaler,-11*scaler }
-	five.aFive = display.newPolygon( x, y, fiveShape )
+	five.object = display.newPolygon( x, y, fiveShape )
 	Red = 2
 	Green = 7
 	Blue = 0
 	five.originalColor.Red = Red
 	five.originalColor.Green = Green
 	five.originalColor.Blue = Blue
-	five.aFive:setFillColor( Red, Green, Blue )      -- fill the five with color
-    --five.aFive.strokeWidth = 0.016 * display.contentWidth   -- Sets the width of the border of five
+	five.object:setFillColor( Red, Green, Blue )      -- fill the five with color
+    --five.object.strokeWidth = 0.016 * display.contentWidth   -- Sets the width of the border of five
 	--Set Stroke color
-    five.aFive:setStrokeColor( 128, 0, 128 )    -- Sets the border color
-    five.aFive:addEventListener( "touch", five.move )
-    five.aFive.alpha = 0.7 --five opacity 
+    five.object:setStrokeColor( 128, 0, 128 )    -- Sets the border color
+    five.object:addEventListener( "touch", five.move )
+    five.object.alpha = 0.7 --five opacity 
 	--check if five has attributes.currentAttribute (in attributes.lua table)
 	print( "Checking five Attributes" )
 	local test = false

@@ -3,7 +3,7 @@
 ----------------------------------------------------------------------------------------
 
 local two = {
-	aTwo = nil,
+	object = nil,
 	originalColor = { Red = 0, Green = 0, Blue = 0 },
 	hasAttribute = nil,
 	inPosition = nil,
@@ -20,19 +20,19 @@ function two.createTwo( x, y, scaler, currentAttribute )
     scaler = scaler * 7 or 7
     --coordinates to make two shape
     local twoShape = { -3*scaler,-11*scaler, -4*scaler,-7*scaler, 4*scaler,-7*scaler, 3*scaler,-3*scaler, -5*scaler,-3*scaler, -8*scaler,9*scaler, 4*scaler,9*scaler, 5*scaler,5*scaler, -3*scaler,5*scaler, -2*scaler,1*scaler, 6*scaler,1*scaler, 9*scaler,-11*scaler  }
-	two.aTwo = display.newPolygon( x, y, twoShape )
+	two.object = display.newPolygon( x, y, twoShape )
 	Red = 2
 	Green = 7
 	Blue = 0
 	two.originalColor.Red = Red
 	two.originalColor.Green = Green
 	two.originalColor.Blue = Blue
-	two.aTwo:setFillColor( Red, Green, Blue )      -- fill the two with color
-    --two.aTwo.strokeWidth = 0.016 * display.contentWidth   -- Sets the width of the border of two
+	two.object:setFillColor( Red, Green, Blue )      -- fill the two with color
+    --two.object.strokeWidth = 0.016 * display.contentWidth   -- Sets the width of the border of two
 	--Set Stroke color
-    two.aTwo:setStrokeColor( 128, 0, 128 )    -- Sets the border color
-    two.aTwo:addEventListener( "touch", two.move )
-    two.aTwo.alpha = 0.7 --two opacity 
+    two.object:setStrokeColor( 128, 0, 128 )    -- Sets the border color
+    two.object:addEventListener( "touch", two.move )
+    two.object.alpha = 0.7 --two opacity 
 	--check if two has attributes.currentAttribute (in attributes.lua table)
 	print( "Checking two Attributes" )
 	local test = false

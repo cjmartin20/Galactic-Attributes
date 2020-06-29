@@ -3,7 +3,7 @@
 ----------------------------------------------------------------------------------------
 
 local three = {
-	aThree = nil,
+	object = nil,
 	originalColor = { Red = 0, Green = 0, Blue = 0 },
 	hasAttribute = nil,
 	inPosition = nil,
@@ -20,19 +20,19 @@ function three.createThree( x, y, scaler, currentAttribute )
     scaler = scaler * 7 or 7
     --coordinates to make three shape
     local threeShape = { -4*scaler,-11*scaler, -2*scaler,-7*scaler, 4*scaler,-7*scaler, 3*scaler,-3*scaler, -5*scaler,-3*scaler, -6*scaler,1*scaler, 2*scaler,1*scaler, 1*scaler,5*scaler, -5*scaler,5*scaler, -8*scaler,9*scaler, 4*scaler,9*scaler, 9*scaler,-11*scaler }
-	three.aThree = display.newPolygon( x, y, threeShape )
+	three.object = display.newPolygon( x, y, threeShape )
 	Red = 2
 	Green = 7
 	Blue = 0
 	three.originalColor.Red = Red
 	three.originalColor.Green = Green
 	three.originalColor.Blue = Blue
-	three.aThree:setFillColor( Red, Green, Blue )      -- fill the three with color
-    --three.aThree.strokeWidth = 0.016 * display.contentWidth   -- Sets the width of the border of three
+	three.object:setFillColor( Red, Green, Blue )      -- fill the three with color
+    --three.object.strokeWidth = 0.016 * display.contentWidth   -- Sets the width of the border of three
 	--Set Stroke color
-    three.aThree:setStrokeColor( 128, 0, 128 )    -- Sets the border color
-    three.aThree:addEventListener( "touch", three.move )
-    three.aThree.alpha = 0.7 --three opacity 
+    three.object:setStrokeColor( 128, 0, 128 )    -- Sets the border color
+    three.object:addEventListener( "touch", three.move )
+    three.object.alpha = 0.7 --three opacity 
 	--check if three has attributes.currentAttribute (in attributes.lua table)
 	print( "Checking three Attributes" )
 	local test = false

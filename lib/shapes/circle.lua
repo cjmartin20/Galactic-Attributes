@@ -2,7 +2,7 @@
 --circle.lua Makes shapes that user can move
 ----------------------------------------------------------------------------------------
 local circle = {
-	aCircle = nil,
+	object = nil,
 	originalColor = { Red = 0, Green = 0, Blue = 0},
 	hasAttribute = nil,
 	inPosition = nil,
@@ -20,19 +20,19 @@ function circle.createCircle( x, y, scaler, currentAttribute )
 	x = x or display.contentCenterX
 	y = y or display.contentCenterY
     scaler = scaler or 1
-    circle.aCircle = display.newCircle( x, y, 60 * scaler )		--x-coordinate, y-coordinate, radius
+    circle.object = display.newCircle( x, y, 60 * scaler )		--x-coordinate, y-coordinate, radius
 	Red = 0
 	Green = 5
 	Blue = 5
 	circle.originalColor.Red = Red
 	circle.originalColor.Green = Green
 	circle.originalColor.Blue = Blue
-	circle.aCircle:setFillColor( Red, Green, Blue )      -- fill the circle with color
-	circle.aCircle.strokeWidth = 0.016 * display.contentWidth   -- Sets the width of the border of circle
+	circle.object:setFillColor( Red, Green, Blue )      -- fill the circle with color
+	circle.object.strokeWidth = 0.016 * display.contentWidth   -- Sets the width of the border of circle
 	--Set Stroke color
-	circle.aCircle:setStrokeColor( 128, 0, 128 )    -- Sets the border color
-    circle.aCircle:addEventListener( "touch", circle.move )
-    circle.aCircle.alpha = 0.7 --circle opacity 
+	circle.object:setStrokeColor( 128, 0, 128 )    -- Sets the border color
+    circle.object:addEventListener( "touch", circle.move )
+    circle.object.alpha = 0.7 --circle opacity 
 	--check if cirlce has attributes.currentAttribute (in attributes.lua table)
 	print( "Checking Circle Attributes" )
 	local test = false
