@@ -3,6 +3,7 @@
 ----------------------------------------------------------------------------------------
 
 local seven = {
+	aSeven = nil,
 	originalColor = { Red = 0, Green = 0, Blue = 0 },
 	hasAttribute = nil,
 	inPosition = nil,
@@ -17,19 +18,19 @@ function seven.createSeven( x, y, scaler, currentAttribute )
     scaler = scaler * 7 or 7
     --coordinates to make shape of seven
 	local sevenShape = { -3*scaler,-11*scaler, 0,-7*scaler, 4*scaler,-7*scaler, 1*scaler,5*scaler, 4*scaler,9*scaler, 9*scaler,-11*scaler }
-	local aseven = display.newPolygon( x, y, sevenShape )
+	seven.aSeven = display.newPolygon( x, y, sevenShape )
 	Red = 7
 	Green = 5
 	Blue = 0
 	seven.originalColor.Red = Red
 	seven.originalColor.Green = Green
 	seven.originalColor.Blue = Blue
-	aseven:setFillColor( Red, Green, Blue )      -- fill the seven with color
-    --aseven.strokeWidth = 0.016 * display.contentWidth   -- Sets the width of the border of seven
+	seven.aSeven:setFillColor( Red, Green, Blue )      -- fill the seven with color
+    --seven.aSeven.strokeWidth = 0.016 * display.contentWidth   -- Sets the width of the border of seven
 	--Set Stroke color
-    aseven:setStrokeColor( 128, 0, 128 )    -- Sets the border color
-    aseven:addEventListener( "touch", seven.move )
-    aseven.alpha = 0.7 --seven opacity 
+    seven.aSeven:setStrokeColor( 128, 0, 128 )    -- Sets the border color
+    seven.aSeven:addEventListener( "touch", seven.move )
+    seven.aSeven.alpha = 0.7 --seven opacity 
 	--check if seven has attributes.currentAttribute (in attributes.lua table)
 	print( "Checking seven Attributes" )
 	local test = false
@@ -42,7 +43,7 @@ function seven.createSeven( x, y, scaler, currentAttribute )
 	end
 	seven.hasAttribute = test
     --initialize attributes.hasAttribute if no value set it to true
-    return aseven
+    return seven
 end --createSeven function
 --Move shapes function
 function seven.move( event )

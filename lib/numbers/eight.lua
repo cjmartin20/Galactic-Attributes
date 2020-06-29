@@ -3,6 +3,7 @@
 ----------------------------------------------------------------------------------------
 
 local eight = {
+	aEight = nil,
 	originalColor = { Red = 0, Green = 0, Blue = 0 },
 	hasAttribute = nil,
 	inPosition = nil,
@@ -17,19 +18,19 @@ function eight.createEight( x, y, scaler, currentAttribute )
     scaler = scaler * 7 or 7
     --coordinates to make shape of eight
 	local eightShape = { -3*scaler,-11*scaler, -6*scaler,1*scaler, 2*scaler,1*scaler, 3*scaler,-3*scaler, -1*scaler,-3*scaler, 0,-7*scaler, 4*scaler,-7*scaler, 1*scaler,5*scaler, -3*scaler,5*scaler, -2*scaler,1.01*scaler, -6*scaler,1.01*scaler, -8*scaler,9*scaler, 4*scaler,9*scaler, 9*scaler,-11*scaler }
-	local aeight = display.newPolygon( x, y, eightShape )
+	eight.aEight = display.newPolygon( x, y, eightShape )
 	Red = 7
 	Green = 5
 	Blue = 0
 	eight.originalColor.Red = Red
 	eight.originalColor.Green = Green
 	eight.originalColor.Blue = Blue
-	aeight:setFillColor( Red, Green, Blue )      -- fill the eight with color
-    --aeight.strokeWidth = 0.016 * display.contentWidth   -- Sets the width of the border of eight
+	eight.aEight:setFillColor( Red, Green, Blue )      -- fill the eight with color
+    --eight.aEight.strokeWidth = 0.016 * display.contentWidth   -- Sets the width of the border of eight
 	--Set Stroke color
-    aeight:setStrokeColor( 128, 0, 128 )    -- Sets the border color
-    aeight:addEventListener( "touch", eight.move )
-    aeight.alpha = 0.7 --eight opacity 
+    eight.aEight:setStrokeColor( 128, 0, 128 )    -- Sets the border color
+    eight.aEight:addEventListener( "touch", eight.move )
+    eight.aEight.alpha = 0.7 --eight opacity 
 	--check if eight has attributes.currentAttribute (in attributes.lua table)
 	print( "Checking eight Attributes" )
 	local test = false
@@ -42,7 +43,7 @@ function eight.createEight( x, y, scaler, currentAttribute )
 	end
 	eight.hasAttribute = test
     --initialize attributes.hasAttribute if no value set it to true
-    return aeight
+    return eight
 end --createEight function
 --Move shapes function
 function eight.move( event )

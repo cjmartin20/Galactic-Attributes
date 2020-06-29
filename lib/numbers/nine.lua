@@ -3,6 +3,7 @@
 ----------------------------------------------------------------------------------------
 
 local nine = {
+	aNine = nil,
 	originalColor = { Red = 0, Green = 0, Blue = 0 },
 	hasAttribute = nil,
 	inPosition = nil,
@@ -16,19 +17,19 @@ function nine.createNine( x, y, scaler, currentAttribute )
     scaler = scaler * 7 or 7
     --coordinates to make shape of nine
 	local nineShape = { -3*scaler,-11*scaler, -6*scaler,1*scaler, 2*scaler,1*scaler, 3*scaler,-3*scaler, -1*scaler,-3*scaler, 0,-7*scaler, 4*scaler,-7*scaler, 1*scaler,5*scaler, -7*scaler,5*scaler, -8*scaler,9*scaler, 4*scaler,9*scaler, 9*scaler,-11*scaler }
-	local anine = display.newPolygon( x, y, nineShape )
+	nine.aNine = display.newPolygon( x, y, nineShape )
 	Red = 7
 	Green = 5
 	Blue = 0
 	nine.originalColor.Red = Red
 	nine.originalColor.Green = Green
 	nine.originalColor.Blue = Blue
-	anine:setFillColor( Red, Green, Blue )      -- fill the nine with color
-    --anine.strokeWidth = 0.016 * display.contentWidth   -- Sets the width of the border of nine
+	nine.aNine:setFillColor( Red, Green, Blue )      -- fill the nine with color
+    --nine.aNine.strokeWidth = 0.016 * display.contentWidth   -- Sets the width of the border of nine
 	--Set Stroke color
-    anine:setStrokeColor( 128, 0, 128 )    -- Sets the border color
-    anine:addEventListener( "touch", nine.move )
-    anine.alpha = 0.7 --nine opacity 
+    nine.aNine:setStrokeColor( 128, 0, 128 )    -- Sets the border color
+    nine.aNine:addEventListener( "touch", nine.move )
+    nine.aNine.alpha = 0.7 --nine opacity 
 	--check if nine has attributes.currentAttribute (in attributes.lua table)
 	print( "Checking nine Attributes" )
 	local test = false
@@ -41,7 +42,7 @@ function nine.createNine( x, y, scaler, currentAttribute )
 	end
 	nine.hasAttribute = test
     --initialize attributes.hasAttribute if no value set it to true
-    return anine
+    return nine
 end --createNine function
 --Move shapes function
 function nine.move( event )

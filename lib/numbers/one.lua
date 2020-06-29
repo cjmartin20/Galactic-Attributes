@@ -2,12 +2,13 @@
 --one.lua	Creates object shaped like the number 1
 ----------------------------------------------------------------------------------------
 
-local one = {
+one = {
+	aOne = nil,
 	originalColor = { Red = 0, Green = 0, Blue = 0 },
-	hasAttribute = nil,
+	hasAttribute = "yes",
 	inPosition = nil,
 	"one",
-    "odd"
+	"odd"
 }
 local useAttributes = require "attributes"
 function one.createOne( x, y, scaler, currentAttribute )
@@ -16,19 +17,19 @@ function one.createOne( x, y, scaler, currentAttribute )
     scaler = scaler * 7 or 7
     --coordinates to make shape of one
     local oneShape = { 3*scaler,-11*scaler, 1*scaler,-10*scaler, 0,-7*scaler, 4*scaler,-7*scaler, 1*scaler,5*scaler, -2*scaler,5*scaler, -3*scaler,9*scaler, 7*scaler,9*scaler, 8*scaler,5*scaler, 5*scaler,5*scaler, 9*scaler,-11*scaler }
-	local aOne = display.newPolygon( x, y, oneShape )
+	one.aOne = display.newPolygon( x, y, oneShape )
 	Red = 7
 	Green = 5
 	Blue = 0
 	one.originalColor.Red = Red
 	one.originalColor.Green = Green
 	one.originalColor.Blue = Blue
-	aOne:setFillColor( Red, Green, Blue )      -- fill the one with color
-    --aOne.strokeWidth = 0.016 * display.contentWidth   -- Sets the width of the border of one
+	one.aOne:setFillColor( Red, Green, Blue )      -- fill the one with color
+    --one.aOne.strokeWidth = 0.016 * display.contentWidth   -- Sets the width of the border of one
 	--Set Stroke color
-    aOne:setStrokeColor( 128, 0, 128 )    -- Sets the border color
-    aOne:addEventListener( "touch", one.move )
-    aOne.alpha = 0.7 --one opacity 
+    one.aOne:setStrokeColor( 128, 0, 128 )    -- Sets the border color
+    one.aOne:addEventListener( "touch", one.move )
+    one.aOne.alpha = 0.7 --one opacity 
 	--check if one has attributes.currentAttribute (in attributes.lua table)
 	print( "Checking one Attributes" )
 	local test = false
@@ -40,8 +41,8 @@ function one.createOne( x, y, scaler, currentAttribute )
         end
 	end
 	one.hasAttribute = test
-    --initialize attributes.hasAttribute if no value set it to true
-    return aOne
+	--initialize attributes.hasAttribute if no value set it to true
+    return one
 end --createOne function
 --Move shapes function
 function one.move( event )

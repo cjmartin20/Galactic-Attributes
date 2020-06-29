@@ -3,6 +3,7 @@
 ----------------------------------------------------------------------------------------
 
 local six = {
+	aSix = nil,
 	originalColor = { Red = 0, Green = 0, Blue = 0 },
 	hasAttribute = nil,
 	inPosition = nil,
@@ -17,19 +18,19 @@ function six.createSix( x, y, scaler, currentAttribute )
     scaler = scaler * 7 or 7
     --coordinates to make shape of six
     local sixShape = { -3*scaler,-11*scaler, 9*scaler,-11*scaler, 8*scaler,-7*scaler, 0,-7*scaler, -3*scaler,5*scaler, 1*scaler,5*scaler, 2*scaler,1*scaler, -2*scaler,1*scaler, -1*scaler,-3*scaler, 7*scaler,-3*scaler, 4*scaler,9*scaler, -8*scaler,9*scaler }
-	local asix = display.newPolygon( x, y, sixShape )
+	six.aSix = display.newPolygon( x, y, sixShape )
 	Red = 7
 	Green = 5
 	Blue = 0
 	six.originalColor.Red = Red
 	six.originalColor.Green = Green
 	six.originalColor.Blue = Blue
-	asix:setFillColor( Red, Green, Blue )      -- fill the six with color
-    --asix.strokeWidth = 0.016 * display.contentWidth   -- Sets the width of the border of six
+	six.aSix:setFillColor( Red, Green, Blue )      -- fill the six with color
+    --six.aSix.strokeWidth = 0.016 * display.contentWidth   -- Sets the width of the border of six
 	--Set Stroke color
-    asix:setStrokeColor( 128, 0, 128 )    -- Sets the border color
-    asix:addEventListener( "touch", six.move )
-    asix.alpha = 0.7 --six opacity 
+    six.aSix:setStrokeColor( 128, 0, 128 )    -- Sets the border color
+    six.aSix:addEventListener( "touch", six.move )
+    six.aSix.alpha = 0.7 --six opacity 
 	--check if six has attributes.currentAttribute (in attributes.lua table)
 	print( "Checking six Attributes" )
 	local test = false
@@ -42,7 +43,7 @@ function six.createSix( x, y, scaler, currentAttribute )
 	end
 	six.hasAttribute = test
     --initialize attributes.hasAttribute if no value set it to true
-    return asix
+    return six
 end --createSix function
 --Move shapes function
 function six.move( event )
