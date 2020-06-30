@@ -12,6 +12,14 @@ local gameSetup = {
     newAttributeButton = nil,
     shapeSet1 = nil,
     walls = nil,
+    --currentObjectTable holds return value of objectSet which are tables that hold the display objects
+    --and their attributes. The display objects are inserted into the display group currentObjects, so their
+    --appearence on the screen can be controlled. currentObjectsTable is for accessing the attributes, such as
+    -- hasAttribute and inPosition
+    currentObjectsTable = {},
+    numObjects = 0,
+
+
     backgroundObjects = display.newGroup(), 
     currentObjects = display.newGroup(),  
     tempObjects = display.newGroup(),
@@ -49,6 +57,21 @@ local gameSetup = {
         gameSetup.buttons:insert( startButton )
         startButton:addEventListener( "tap", gameSetup.startGame )
     end
+    function gameSetup.congratulations()
+        local text = display.newText( {
+            text = ("Congratulations!\nThat's correct!"),
+            x = display.contentCenterX,
+            y = 0.30 * display.contentCenterY,
+            width = 0.8 * display.contentWidth,
+            height = 0.25 * display.contentHeight,
+            font = native.systemFont,
+            fontSize = 35 * scaler,
+            align = "center"
+            }
+        )
+        gameSetup.tempObjects:insert( text )
+        gameSetup.newAttributeButton()
+    end
     function gameSetup.startGame( event )
         button = event.target
         display.remove( button )
@@ -64,15 +87,83 @@ local gameSetup = {
         end
         gameSetup.gameBackground1()
         gameSetup.menuButton()
-        useObjectSets.createObjectSet1( gameSetup.currentObjects )
+        gameSetup.currentObjectsTable = useObjectSets.createObjectSet1()
+        for uselessVar in pairs( gameSetup.currentObjectsTable ) do 
+            gameSetup.numObjects = gameSetup.numObjects + 1 
+        end
+        for i=1, gameSetup.numObjects do
+            gameSetup.currentObjects:insert( gameSetup.currentObjectsTable[ i].object )
+        end
+    end
+    function gameSetup.startChecking( )
+        --#! /usr/bin/env lua
+        local M = require 'posix.unistd'
+        local r,w = M.pipe()
+        local childpid = M.fork()
+        if childpid == 0 then
+            -- child reads from pipe
+            M.close(w)  -- close unused write end
+
+            local b = M.read(r, 1)
+            while #b == 1 do
+                -- got a byte from the pipe, write it to stdout
+                io.write(b)
+                b = M.read(r, 1)
+            end
+            M.close(r)
+            M._exit(0)
+
+        else
+            -- parent writes to pipe
+            M.close(r) -- close unused read end
+
+            -- write the bytes for the child process to the pipe
+            M.write(w,'hello dolly\n')
+            M.close(w)
+            -- wait for child to finish
+            require 'posix.sys.wait'.wait(childpid)
+        end
+
+        
+    
+        local clock = os.clock
+
+        function sleep(n)  -- seconds
+            local t0 = clock()
+            while clock() - t0 <= n do
+                print( clock() - t0 )
+            end
+        end
     end
     --------------------------------------------------------
     -- Buttons
     --------------------------------------------------------
+    function gameSetup.checkObjects() --returns true if all objects with attribute are in position and no incorrect objects are in position
+        local correctInPosition = 0
+        local incorrectInPosition = 0
+        local totalWithAttribute = 0
+        for i = 1, gameSetup.numObjects do
+            if gameSetup.currentObjectsTable[ i ].inPosition and gameSetup.currentObjectsTable[ i ].hasAttribute then
+                correctInPosition = correctInPosition + 1
+            end
+            if gameSetup.currentObjectsTable[ i ].inPosition and gameSetup.currentObjectsTable[ i ].hasAttribute == false then
+                incorrectInPosition = incorrectInPosition + 1
+            end
+            if gameSetup.currentObjectsTable[ i ].hasAttribute then
+                totalWithAttribute = totalWithAttribute + 1
+            end
+        end
+        print( "Correct In position ", correctInPosition )
+        print( "Incorrect In posistion ", incorrectInPosition )
+        print( "total with attribute ", totalWithAttribute )
+        if correctInPosition == totalWithAttribute and incorrectInPosition == 0 then
+            gameSetup.congratulations()
+        end
+    end
     function gameSetup.directionsButton()
         local dButton = display.newImageRect( ".\\lib\\images\\directionsButton.png", 0.6 * display.contentWidth, 0.3 * display.contentWidth)
         dButton.x = display.contentCenterX
-        dButton.y = 0.6 * display.contentHeight
+        dButton.y = 0.2 * display.contentHeight
         dButton:addEventListener( "tap", gameSetup.directions )
         gameSetup.buttons:insert( dButton )
     end --directionsButton function
@@ -100,7 +191,7 @@ local gameSetup = {
         menuButton.x = 0.8 * display.contentWidth
         menuButton.y = 0.93 * display.contentHeight
         gameSetup.buttons:insert( menuButton )
-        menuButton:addEventListener( "tap", gameSetup.openMenu )
+        menuButton:addEventListener( "tap", gameSetup.checkObjects )
     end
     function gameSetup.openMenu()
         menuBackground = display.newImageRect( ".\\lib\\images\\menuBackground.png", 1.5 * display.contentWidth , display.contentHeight )
@@ -192,8 +283,12 @@ local gameSetup = {
             gameSetup.objectSet = 1
         end
         if gameSetup.objectSet == 1 then
-            useObjectSets.createObjectSet1( gameSetup.currentObjects )
-	        print( "Using ObjectSet1" )
+            newObjects = useObjectSets.createObjectSet1()
+            local knt = 0
+            for uselessVar in pairs( newObjects ) do 
+                knt = knt + 1 
+            end
+	        print( "Counting object set one", knt )
         end
         if gameSetup.objectSet == 2 then
             useObjectSets.createObjectSet2( gameSetup.currentObjects )
@@ -270,4 +365,5 @@ local gameSetup = {
         gameSetup.backgroundObjects:insert( background )
         gameSetup.backgroundObjects:insert( center )
     end --end gameBackground3
+
 return gameSetup --end gameSetup 

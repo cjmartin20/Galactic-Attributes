@@ -61,11 +61,12 @@
         return walls
     end --end createWalls
 
-    function objectSets.createObjectSet1( currentObjects )
+    function objectSets.createObjectSet1()
 
-        --currentObjects = display.newGroup()
+        currentObjects = {}
 
-        local currentAttribute = "prime" 
+        local currentAttribute = "odd" 
+        --[[
         local topText = display.newText( {
             text = ("Objects with attribute \"" .. currentAttribute .. "\""), --text
             x = 0.65 * display.contentWidth, --x
@@ -77,9 +78,10 @@
             --align = "center"
             }
         )
+        --]]
         local one1 = useOne.createOne( centerX, centerY, scaler, currentAttribute )
+        local two1 = useTwo.createTwo( centerX, bottomY, scaler, currentAttribute )
         --[[
-        local two1 = useTwo.createTwo( centerX, bottomY, 20, currentAttribute )
         local three1 = useThree.createThree( 200, 700, 20, currentAttribute )
         local four1 = useFour.createFour( 800, 1000, 20, currentAttribute )
         local five1 = useFive.createFive( bottomX, rightX, 20, currentAttribute )
@@ -87,31 +89,29 @@
         local seven1 = useSeven.createSeven( 550, 900, 20, currentAttribute )
         local eight1 = useEight.createEight( centerX, 1000, 20, currentAttribute )
         local nine1 = useNine.createNine( 400, 200, 20, currentAttribute )
-        --]]
         local pentagon1 = usePentagon.createPentagon( centerX, topY, scaler, currentAttribute )
         local circle1 = useCircle.createCircle( leftX, 0.65 * display.contentHeight, scaler, currentAttribute )
-        --local circle2 = useCircle.createCircle( centerX, 0.75 * display.contentHeight, 0.12 * display.contentWidth, currentAttribute )
+        local circle2 = useCircle.createCircle( centerX, 0.75 * display.contentHeight, 0.12 * display.contentWidth, currentAttribute )
         local square1 = useSquare.createSquare( rightX, 0.45 * display.contentHeight, scaler, currentAttribute )
         --local square2 = useSquare.createSquare( leftX, bottomY, 0.22 * display.contentWidth, currentAttribute )
         local triangle1 = useTriangle.createTriangle( middleX, bottomY, scaler, currentAttribute )     
+        --]]
         --add "Physics" to all objects
-        physics.addBody( pentagon1, { bounce=1, friction=1, radius = 0.175 * display.contentWidth } )
-        physics.addBody( circle1, { bounce=1, friction=1, radius = 0.175 * display.contentWidth } )
-        --physics.addBody( circle2, { bounce=1, friction=1, radius = 0.175 * display.contentWidth } )
-        physics.addBody( square1, { bounce=1, friction=1, radius = 0.175 * display.contentWidth } )
-        --physics.addBody( square2, { bounce=1, friction=1, radius = 0.175 * display.contentWidth } )
-        physics.addBody( triangle1, { bounce=1, friction=1, radius = 0.175 * display.contentWidth } )
-    --insert objects in to currentObjects group
-        currentObjects:insert( pentagon1 )
-        currentObjects:insert( topText ) 
-        currentObjects:insert( circle1 ) 
-        --currentObjects:insert( circle2 )
-        currentObjects:insert( square1 )
-        --currentObjects:insert( square2 )
-        currentObjects:insert( triangle1 )
-        print("Number of objects : " .. currentObjects.numChildren )
+        physics.addBody( one1.object, { bounce=1, friction=1, radius = 0.175 * display.contentWidth } )
+        physics.addBody( two1.object, { bounce=1, friction=1, radius = 0.175 * display.contentWidth } )
+        --[[
+        physics.addBody( pentagon1.object, { bounce=1, friction=1, radius = 0.175 * display.contentWidth } )
+        physics.addBody( circle1.object, { bounce=1, friction=1, radius = 0.175 * display.contentWidth } )
+        physics.addBody( circle2, { bounce=1, friction=1, radius = 0.175 * display.contentWidth } )
+        physics.addBody( square1.object, { bounce=1, friction=1, radius = 0.175 * display.contentWidth } )
+        physics.addBody( square2, { bounce=1, friction=1, radius = 0.175 * display.contentWidth } )
+        physics.addBody( triangle1.object, { bounce=1, friction=1, radius = 0.175 * display.contentWidth } )
+        --]]
+        --insert objects in to currentObjects group
+        table.insert( currentObjects, one1 )
+        table.insert( currentObjects, two1 )
 
-        --return currentObjects
+        return currentObjects
     end	--end createObjectSet1
     function createObjectSet2()
         local currentAttribute = "triangle"
