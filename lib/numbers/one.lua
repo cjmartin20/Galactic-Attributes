@@ -16,7 +16,7 @@ function one.createOne( x, y, scaler, currentAttribute )
     y = y or display.contentCenterY
     scaler = scaler * 7 or 7
     --coordinates to make shape of one
-    local oneShape = { 3*scaler,-11*scaler, 1*scaler,-10*scaler, 0,-7*scaler, 4*scaler,-7*scaler, 1*scaler,5*scaler, -2*scaler,5*scaler, -3*scaler,9*scaler, 7*scaler,9*scaler, 8*scaler,5*scaler, 5*scaler,5*scaler, 9*scaler,-11*scaler }
+    local oneShape = { 2*scaler,-11*scaler, 0,-10*scaler, -1*scaler,-7*scaler, 3*scaler,-7*scaler, 0,5*scaler, -3*scaler,5*scaler, -4*scaler,9*scaler, 6*scaler,9*scaler, 7*scaler,5*scaler, 4*scaler,5*scaler, 8*scaler,-11*scaler }
 	one.object = display.newPolygon( x, y, oneShape )
 	Red = 7
 	Green = 5
