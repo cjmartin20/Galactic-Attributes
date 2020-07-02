@@ -8,8 +8,8 @@ local pentagon = {
 	hasAttribute = nil,
 	inPosition = nil,
 	"pentagon",
-    "6 sides",
-	"6 vertices",
+    "5 sides",
+	"5 vertices",
 	"polygon"
 }
 local useAttributes = require "attributes"
