@@ -19,7 +19,7 @@ function pentagon.createPentagon( x, y, scaler, currentAttribute )
 	y = y or display.contentCenterY
 	scaler = scaler * 11 or 11
 	local pentagonShape = { 0,-6*scaler, -7*scaler,-2*scaler, -4*scaler,5*scaler, 4*scaler,5*scaler, 7*scaler,-2*scaler }
-	pentagon.object = display.newPolygon( 0, 0, pentagonShape )
+	pentagon.object = display.newPolygon( x, y, pentagonShape )
 	Red = 0
 	Green = 5
 	Blue = 5
