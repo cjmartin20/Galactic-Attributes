@@ -18,7 +18,7 @@ function hexagon.createHexagon( x, y, scaler, currentAttribute )
 	y = y or display.contentCenterY
 	scaler = scaler * 0.5 or 0.5
 	local hexagonShape = { 0,-152*scaler, 132*scaler,-76*scaler, 132*scaler,76*scaler, 0,152*scaler, -132*scaler,76*scaler, -132*scaler,-76*scaler }
-	hexagon.object = display.newPolygon( 0, 0, hexagonShape )
+	hexagon.object = display.newPolygon( x, y, hexagonShape )
 	Red = 0
 	Green = 5
 	Blue = 5
