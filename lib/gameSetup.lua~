@@ -233,12 +233,6 @@ local gameSetup = {
         print( "total with attribute ", totalWithAttribute )
         if correctInPosition == totalWithAttribute and incorrectInPosition == 0 then
             gameSetup.congratulations()
-	else
-	    for i=1, gameSetup.buttons.numChildren do 
-	        display.remove( gameSetup.buttons[ 1 ])
-	    end
-	    gameSeupt.hintButton()
-	    gameSetup.returnButton()
         end
     end
     function gameSetup.directionsButton()
@@ -276,7 +270,7 @@ local gameSetup = {
     end --hintButton
     function gameSetup.hint()
         local directionsText = display.newText( {
-            text = ( gameSetup.currentObjects.hint ), --text
+            text = ("Galactic Attributes is a small “game” that is designed for young learners to explore the idea of attributes and familiarize themselves with different numbers and shapes. An attribute will be displayed at the top of the screen, and the user moves the objects onto the center of the screen to check if they match the attribute. Objects that have the given attribute will turn green, and objects that do not will turn red."), --text
             x = display.contentCenterX, --x
             y = display.contentHeight * 0.5, --display.contentHeight / 30, --y 
             width = 0.8 * display.contentWidth, --width
