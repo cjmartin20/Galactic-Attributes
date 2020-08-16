@@ -7,11 +7,7 @@ local gameSetup = {
     currentTheme = 1,
     numberOfThemes = 3,
     objectSet = 1,
-<<<<<<< Updated upstream
-    numberOfObjectSets = 8,
-=======
     numberOfObjectSets = 2,
->>>>>>> Stashed changes
     mainBackground = nil,
     newAttributeButton = nil,
     shapeSet1 = nil,
@@ -162,15 +158,12 @@ local gameSetup = {
         print( "total with attribute ", totalWithAttribute )
         if correctInPosition == totalWithAttribute and incorrectInPosition == 0 then
             gameSetup.congratulations()
-<<<<<<< Updated upstream
-=======
 	    else
             for i=1, gameSetup.buttons.numChildren do 
                 display.remove( gameSetup.buttons[ 1 ])
             end
             gameSetup.hintButton()
             gameSetup.returnButton()
->>>>>>> Stashed changes
         end
     end
     function gameSetup.directionsButton()
