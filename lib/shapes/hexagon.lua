@@ -6,7 +6,7 @@ local hexagon = {
 	object = nil,
 	originalColor = { Red = 0, Green = 0, Blue = 0},
 	hasAttribute = nil,
-	inPosition = nil,
+	inPosition = false,
 	"hexagon",
     "6 sides",
 	"6 vertices",

@@ -5,8 +5,8 @@
 one = {
 	object = nil,
 	originalColor = { Red = 0, Green = 0, Blue = 0 },
-	hasAttribute = "yes",
-	inPosition = nil,
+	hasAttribute = nil,
+	inPosition = false,
 	"one",
 	"odd"
 }
