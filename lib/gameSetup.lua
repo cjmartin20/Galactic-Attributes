@@ -51,7 +51,7 @@ local gameSetup = {
 
     end
     function gameSetup.createStartButton()
-        local startButton = display.newImageRect( ".\\lib\\images\\PlayButton.png", 0.6 * display.contentWidth, 0.2 * display.contentWidth )
+        local startButton = display.newImageRect( ".\\lib\\images\\startButton.png", 0.6 * display.contentWidth, 0.2 * display.contentWidth )
         startButton.x = display.contentCenterX
         startButton.y = 0.6 * display.contentHeight
         gameSetup.buttons:insert( startButton )
@@ -87,6 +87,7 @@ local gameSetup = {
         end
         gameSetup.gameBackground1()
         gameSetup.menuButton()
+        gameSetup.checkButton()
         gameSetup.currentObjectsTable = useObjectSets.createObjectSet1()
         for uselessVar in pairs( gameSetup.currentObjectsTable ) do 
             gameSetup.numObjects = gameSetup.numObjects + 1 
@@ -138,6 +139,13 @@ local gameSetup = {
     --------------------------------------------------------
     -- Buttons
     --------------------------------------------------------
+    function gameSetup.checkButton()
+        local checkButton = display.newImageRect( ".\\lib\\images\\checkButton.png", 0.35 * display.contentWidth, 0.1 * display.contentHeight)
+        checkButton.x = 0.2 * display.contentWidth
+        checkButton.y = 0.93 * display.contentHeight
+        gameSetup.buttons:insert( checkButton )
+        checkButton:addEventListener( "tap", gameSetup.checkObjects )
+    end
     function gameSetup.checkObjects() --returns true if all objects with attribute are in position and no incorrect objects are in position
         local correctInPosition = 0
         local incorrectInPosition = 0
@@ -194,8 +202,8 @@ local gameSetup = {
     end --directions function
     function gameSetup.hintButton()
         local hintButton = display.newImageRect( ".\\lib\\images\\hintButton.png", 0.35 * display.contentWidth, 0.1 * display.contentHeight)
-        hintButton.x = 0.8 * display.contentWidth
-        hintButton.y = 0.93 * display.contentHeight
+        hintButton.x = 0.2 * display.contentWidth
+        hintButton.y = 0.07 * display.contentHeight
         gameSetup.buttons:insert( hintButton )
         hintButton:addEventListener( "tap", gameSetup.hint )
     end --hintButton
@@ -219,7 +227,7 @@ local gameSetup = {
         gameSetup.returnButton()
     end
     function gameSetup.menuButton()
-        local menuButton = display.newImageRect( ".\\lib\\images\\menu.png", 0.35 * display.contentWidth, 0.1 * display.contentHeight)
+        local menuButton = display.newImageRect( ".\\lib\\images\\menuButton.png", 0.35 * display.contentWidth, 0.1 * display.contentHeight)
         menuButton.x = 0.8 * display.contentWidth
         menuButton.y = 0.93 * display.contentHeight
         gameSetup.buttons:insert( menuButton )
