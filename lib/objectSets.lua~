@@ -451,5 +451,5 @@
         end
         print("Knt in currentObjects (objectSets) :", knt )
         return currentObjects
-    end --objectSet8
+    end -objectSet8
 return objectSets
