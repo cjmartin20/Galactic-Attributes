@@ -61,7 +61,7 @@ local gameSetup = {
         local text = display.newText( {
             text = ("Congratulations!\nThat's correct!"),
             x = display.contentCenterX,
-            y = 0.30 * display.contentCenterY,
+            y = 0.33 * display.contentHeight,
             width = 0.8 * display.contentWidth,
             height = 0.25 * display.contentHeight,
             font = native.systemFont,
@@ -139,6 +139,32 @@ local gameSetup = {
     --------------------------------------------------------
     -- Buttons
     --------------------------------------------------------
+    function gameSetup.aboutButton()
+        local aButton = display.newImageRect( ".\\lib\\images\\aboutButton.png", 0.6 * display.contentWidth, 0.3 * display.contentWidth)
+        aButton.x = display.contentCenterX
+        aButton.y = 0.8 * display.contentHeight
+        aButton:addEventListener( "tap", gameSetup.about )
+        gameSetup.buttons:insert( aButton )
+    end
+    function gameSetup.about()
+        local aboutText = display.newText( {
+            text = ("Galactic Attributes is a small game that is designed for young learners to explore the idea of attributes and familiarize themselves with different numbers and shapes. It was developed for Dr. Emma Bullock, a math professor at Sam Houston State University, in order to get a grant that would allow similar games to be made at a professional level. Galactic Attributes is a remake of a game called 'Attribute Blocks', that was found in The National Library of Virtual Manipulatives. The NLVM is the focus of games to be improved and recreated to have a much more significant learning impact on young students. Galactic was developed as a group project for Software Engineering (COSC 4319) taught by Dr. ABM Islam at Sam Houston State University."),
+            x = 0.54 * display.contentWidth,
+            y = 0.26 * display.contentHeight,
+            width = 0.65 * display.contentWidth,
+            height = 0.45 * display.contentHeight,
+            font = native.systemFont,
+            fontSize = 16 * scaler,
+            align = "right"
+            }
+        )
+        gameSetup.tempObjects:insert( aboutText )
+        --remove buttons
+        for i=1, gameSetup.buttons.numChildren do 
+            display.remove( gameSetup.buttons[ 1 ])
+        end
+        gameSetup.returnButton()
+    end
     function gameSetup.checkButton()
         local checkButton = display.newImageRect( ".\\lib\\images\\checkButton.png", 0.35 * display.contentWidth, 0.1 * display.contentHeight)
         checkButton.x = 0.2 * display.contentWidth
@@ -177,7 +203,7 @@ local gameSetup = {
     function gameSetup.directionsButton()
         local dButton = display.newImageRect( ".\\lib\\images\\directionsButton.png", 0.6 * display.contentWidth, 0.3 * display.contentWidth)
         dButton.x = display.contentCenterX
-        dButton.y = 0.2 * display.contentHeight
+        dButton.y = 0.6 * display.contentHeight
         dButton:addEventListener( "tap", gameSetup.directions )
         gameSetup.buttons:insert( dButton )
     end --directionsButton function
@@ -231,7 +257,7 @@ local gameSetup = {
         menuButton.x = 0.8 * display.contentWidth
         menuButton.y = 0.93 * display.contentHeight
         gameSetup.buttons:insert( menuButton )
-        menuButton:addEventListener( "tap", gameSetup.checkObjects )
+        menuButton:addEventListener( "tap", gameSetup.openMenu )
     end
     function gameSetup.openMenu()
         menuBackground = display.newImageRect( ".\\lib\\images\\menuBackground.png", 1.5 * display.contentWidth , display.contentHeight )
@@ -242,9 +268,10 @@ local gameSetup = {
         for i=1, gameSetup.buttons.numChildren do 
             display.remove( gameSetup.buttons[ 1 ])
         end    
-        gameSetup.newAttributeButton()
+        gameSetup.aboutButton()
         gameSetup.changeThemeButton()
         gameSetup.directionsButton()
+        gameSetup.newAttributeButton()
         gameSetup.returnButton()
     end
     function gameSetup.returnButton()
@@ -263,7 +290,8 @@ local gameSetup = {
         for i=1, gameSetup.buttons.numChildren do 
             display.remove( gameSetup.buttons[ 1 ])
         end
-        gameSetup.menuButton()       
+        gameSetup.menuButton()
+        gameSetup.checkButton()       
     end
     function gameSetup.changeThemeButton()
         local changeThemeButton = display.newImageRect( ".\\lib\\images\\changeThemeButton.png", 0.6 * display.contentWidth, 0.3 * display.contentWidth)
