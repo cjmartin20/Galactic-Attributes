@@ -2,6 +2,8 @@
 -- main.lua 	main program for Attribute Blocks
 ---------------------------------------------------------------
 
+
+
 --change the path below to the lib directory
 --change the path below to the lib directory
 local curDir =  'C:\\Users\\cjmar\\Documents\\SHARED\\x_Github\\Galactic-Attributes\\'
