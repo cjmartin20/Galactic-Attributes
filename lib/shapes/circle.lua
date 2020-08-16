@@ -5,7 +5,7 @@ local circle = {
 	object = nil,
 	originalColor = { Red = 0, Green = 0, Blue = 0},
 	hasAttribute = nil,
-	inPosition = nil,
+	inPosition = false,
 	"circle",
     "round",
     "radius",

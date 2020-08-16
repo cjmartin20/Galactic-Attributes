@@ -7,7 +7,11 @@ local gameSetup = {
     currentTheme = 1,
     numberOfThemes = 3,
     objectSet = 1,
+<<<<<<< Updated upstream
     numberOfObjectSets = 8,
+=======
+    numberOfObjectSets = 2,
+>>>>>>> Stashed changes
     mainBackground = nil,
     newAttributeButton = nil,
     shapeSet1 = nil,
@@ -70,7 +74,7 @@ local gameSetup = {
             }
         )
         gameSetup.tempObjects:insert( text )
-        gameSetup.newAttributeButton()
+        gameSetup.newAttributeButtonCentered()
     end
     function gameSetup.startGame( event )
         button = event.target
@@ -158,6 +162,15 @@ local gameSetup = {
         print( "total with attribute ", totalWithAttribute )
         if correctInPosition == totalWithAttribute and incorrectInPosition == 0 then
             gameSetup.congratulations()
+<<<<<<< Updated upstream
+=======
+	    else
+            for i=1, gameSetup.buttons.numChildren do 
+                display.remove( gameSetup.buttons[ 1 ])
+            end
+            gameSetup.hintButton()
+            gameSetup.returnButton()
+>>>>>>> Stashed changes
         end
     end
     function gameSetup.directionsButton()
@@ -186,6 +199,32 @@ local gameSetup = {
         end
         gameSetup.returnButton()
     end --directions function
+    function gameSetup.hintButton()
+        local hintButton = display.newImageRect( ".\\lib\\images\\hintButton.png", 0.35 * display.contentWidth, 0.1 * display.contentHeight)
+        hintButton.x = 0.8 * display.contentWidth
+        hintButton.y = 0.93 * display.contentHeight
+        gameSetup.buttons:insert( hintButton )
+        hintButton:addEventListener( "tap", gameSetup.hint )
+    end --hintButton
+    function gameSetup.hint()
+        local hintText = display.newText( {
+            text = ( gameSetup.currentObjectsTable[ 1 ].hint ), --textObject is located at index 1
+            x = display.contentCenterX, --x
+            y = display.contentHeight * 0.5, --display.contentHeight / 30, --y 
+            width = 0.8 * display.contentWidth, --width
+            height = 0.5 * display.contentHeight, --height
+            font = native.systemFont, --font
+            fontSize = 20 * scaler,--0.8 * display.contentHeight --fontsize
+            align = "center"
+            }
+        )
+        gameSetup.tempObjects:insert( hintText )
+        --remove buttons
+        for i=1, gameSetup.buttons.numChildren do 
+            display.remove( gameSetup.buttons[ 1 ])
+        end
+        gameSetup.returnButton()
+    end
     function gameSetup.menuButton()
         local menuButton = display.newImageRect( ".\\lib\\images\\menu.png", 0.35 * display.contentWidth, 0.1 * display.contentHeight)
         menuButton.x = 0.8 * display.contentWidth
@@ -260,6 +299,13 @@ local gameSetup = {
         local attributeButton = display.newImageRect( ".\\lib\\images\\newAttributeButton.png", 0.6 * display.contentWidth, 0.3 * display.contentWidth )
         attributeButton.x = display.contentCenterX
         attributeButton.y = 0.2 * display.contentHeight
+        gameSetup.buttons:insert( attributeButton )
+        attributeButton:addEventListener( "tap", gameSetup.newAttribute )
+    end
+    function gameSetup.newAttributeButtonCentered()
+        local attributeButton = display.newImageRect( ".\\lib\\images\\newAttributeButton.png", 0.6 * display.contentWidth, 0.3 * display.contentWidth )
+        attributeButton.x = display.contentCenterX
+        attributeButton.y = 0.5 * display.contentHeight
         gameSetup.buttons:insert( attributeButton )
         attributeButton:addEventListener( "tap", gameSetup.newAttribute )
     end

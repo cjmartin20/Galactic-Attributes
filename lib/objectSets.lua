@@ -84,7 +84,8 @@
             }
         )
         --allow text to be treated like objects with attributes by adding to table
-        local textObject = {
+        textObject = {
+            hint = "Even numbers are divisble by two.",
             object = topText,
             hasAttribute = false,
             inPosition = false
@@ -137,6 +138,7 @@
         )
         --allow text to be treated like objects with attributes by adding to table
         local textObject = {
+            hint = "A square has 4 sides",
             object = topText,
             hasAttribute = false,
             inPosition = false
@@ -323,6 +325,7 @@
         )
         --allow text to be treated like objects with attributes by adding to table
         local textObject = {
+            hint = "This is a hint",
             object = topText,
             hasAttribute = false,
             inPosition = false
