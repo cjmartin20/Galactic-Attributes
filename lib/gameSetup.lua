@@ -196,6 +196,7 @@ local gameSetup = {
             for i=1, gameSetup.buttons.numChildren do 
                 display.remove( gameSetup.buttons[ 1 ])
             end
+            gameSetup.checkButton()
             gameSetup.hintButton()
             gameSetup.returnButton()
         end
@@ -341,7 +342,12 @@ local gameSetup = {
     function gameSetup.newAttribute()
         local newObjects
         print("Number of objects                      : " .. gameSetup.currentObjects.numChildren )
-        print("Number of items in currentObjectsTable :" .. gameSetup.currentObjectsTable.numChildren )
+        knt = 0
+        for uselessVar in pairs( gameSetup.currentObjectsTable ) do 
+            knt = knt + 1 
+        end
+        print("Number of items in currentObjectsTable :" .. knt )
+
         --remove all temporary objects
         for i=1, gameSetup.tempObjects.numChildren do 
             display.remove( gameSetup.tempObjects[ 1 ])
