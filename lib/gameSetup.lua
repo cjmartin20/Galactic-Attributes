@@ -7,7 +7,7 @@ local gameSetup = {
     currentTheme = 1,
     numberOfThemes = 3,
     objectSet = 1,
-    numberOfObjectSets = 2,
+    numberOfObjectSets = 8,
     mainBackground = nil,
     newAttributeButton = nil,
     shapeSet1 = nil,
@@ -340,7 +340,8 @@ local gameSetup = {
     end
     function gameSetup.newAttribute()
         local newObjects
-        print("Number of objects : " .. gameSetup.currentObjects.numChildren )
+        print("Number of objects                      : " .. gameSetup.currentObjects.numChildren )
+        print("Number of items in currentObjectsTable :" .. gameSetup.currentObjectsTable.numChildren )
         --remove all temporary objects
         for i=1, gameSetup.tempObjects.numChildren do 
             display.remove( gameSetup.tempObjects[ 1 ])
@@ -359,41 +360,38 @@ local gameSetup = {
         end
         if gameSetup.objectSet == 1 then
             newObjects = useObjectSets.createObjectSet1()
-            local knt = 0
-            for uselessVar in pairs( newObjects ) do 
-                knt = knt + 1 
-            end
-	        print( "Counting object set one", knt )
+            print( "Using ObjectSet1" )
         end
         if gameSetup.objectSet == 2 then
-            useObjectSets.createObjectSet2( gameSetup.currentObjects )
-	        print( "Using ObjectSet2" )
+            newObjects = useObjectSets.createObjectSet2()
+            print( "Using ObjectSet2" )
         end
         if gameSetup.objectSet == 3 then 
-            useObjectSets.createObjectSet3( gameSetup.currentObjects )
+            newObjects = useObjectSets.createObjectSet3()
             print( "Using ObjectSet3" )
         end
         if gameSetup.objectSet == 4 then
-            useObjectSets.createObjectSet4( gameSetup.currentObjects )
+            newObjects = useObjectSets.createObjectSet4()
 	        print( "Using ObjectSet4" )
         end
         if gameSetup.objectSet == 5 then
-            useObjectSets.createObjectSet5( gameSetup.currentObjects )
+            newObjects = useObjectSets.createObjectSet5()
 	        print( "Using ObjectSet5" )
         end
         if gameSetup.objectSet == 6 then 
-            useObjectSets.createObjectSet6( gameSetup.currentObjects )
+            newObjects = useObjectSets.createObjectSet6()
             print( "Using ObjectSet6" )
         end
         if gameSetup.objectSet == 7 then
-            useObjectSets.createObjectSet7( gameSetup.currentObjects )
+            newObjects = useObjectSets.createObjectSet7()
 	        print( "Using ObjectSet7" )
         end
         if gameSetup.objectSet == 8 then 
-            useObjectSets.createObjectSet8( gameSetup.currentObjects )
+            newObjects = useObjectSets.createObjectSet8()
             print( "Using ObjectSet8" )
         end
         gameSetup.menuButton()
+        gameSetup.checkButton()
     end
     function gameSetup.gameBackground1()
         --remove all background objects
