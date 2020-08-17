@@ -85,7 +85,7 @@
         )
         --allow text to be treated like objects with attributes by adding to table
         textObject = {
-            hint = "Even numbers are divisble by two.",
+            hint = "Even numbers are divisble by two!",
             object = topText,
             hasAttribute = false,
             inPosition = false
@@ -138,7 +138,7 @@
         )
         --allow text to be treated like objects with attributes by adding to table
         local textObject = {
-            hint = "A square has 4 sides",
+            hint = "A square has 4 sides!",
             object = topText,
             hasAttribute = false,
             inPosition = false
@@ -186,6 +186,7 @@
         )
         --allow text to be treated like objects with attributes by adding to table
         local textObject = {
+            hint = "Come on, just count the sides!",
             object = topText,
             hasAttribute = false,
             inPosition = false
@@ -228,6 +229,7 @@
         )
         --allow text to be treated like objects with attributes by adding to table
         local textObject = {
+            hint = "An odd number cannot be divided by two, without a remainder!",
             object = topText,
             hasAttribute = false,
             inPosition = false
@@ -264,7 +266,7 @@
 
         local currentObjects = {}
 
-        local currentAttribute = "square" 
+        local currentAttribute = "triangle" 
         local topText = display.newText( {
             text = ("Objects with attribute \"" .. currentAttribute .. "\""),
             x = 0.5 * display.contentWidth,
@@ -278,6 +280,7 @@
         )
         --allow text to be treated like objects with attributes by adding to table
         local textObject = {
+            hint = "triangles have 3 sides!",
             object = topText,
             hasAttribute = false,
             inPosition = false
@@ -300,11 +303,6 @@
         table.insert( currentObjects, square1 )
         table.insert( currentObjects, circle1 )
         table.insert( currentObjects, pent1 )
-        knt = 0
-        for uselessVar in pairs( currentObjects ) do 
-            knt = knt + 1 
-        end
-        print("Knt in currentObjects (objectSets) :", knt )
         return currentObjects
     end	--end createObjectSet5
     function createObjectSet6( currentObjects )
@@ -325,7 +323,7 @@
         )
         --allow text to be treated like objects with attributes by adding to table
         local textObject = {
-            hint = "This is a hint",
+            hint = "Prime numbers are only divisble by 1 and themselves!",
             object = topText,
             hasAttribute = false,
             inPosition = false
@@ -351,11 +349,6 @@
         table.insert( currentObjects, six1 )
         table.insert( currentObjects, eight1 )
         table.insert( currentObjects, nine1 )
-        knt = 0
-        for uselessVar in pairs( currentObjects ) do 
-            knt = knt + 1 
-        end
-        print("Knt in currentObjects (objectSets) :", knt )
         return currentObjects
     end	--end createObjectSet6
     function createObjectSet7( currentObjects )
@@ -376,6 +369,7 @@
         )
         --allow text to be treated like objects with attributes by adding to table
         local textObject = {
+            hint = "Hexagons have 6 sides!",
             object = topText,
             hasAttribute = false,
             inPosition = false
@@ -398,11 +392,6 @@
         table.insert( currentObjects, square1 )
         table.insert( currentObjects, circle1 )
         table.insert( currentObjects, pent1 )
-        knt = 0
-        for uselessVar in pairs( currentObjects ) do 
-            knt = knt + 1 
-        end
-        print("Knt in currentObjects (objectSets) :", knt )
         return currentObjects
     end	--end createObjectSet7
     function createObjectSet8( currentObjects )
@@ -423,6 +412,7 @@
         )
         --allow text to be treated like objects with attributes by adding to table
         local textObject = {
+            hint = "You know the number two, right?",
             object = topText,
             hasAttribute = false,
             inPosition = false
@@ -448,11 +438,5 @@
         table.insert( currentObjects, eight1 )
         table.insert( currentObjects, nine1 )
         table.insert( currentObjects, three1 )
-        knt = 0
-        for uselessVar in pairs( currentObjects ) do 
-            knt = knt + 1 
-        end
-        print("Knt in currentObjects (objectSets) :", knt )
-        return currentObjects
     end --objectSet8
 return objectSets
