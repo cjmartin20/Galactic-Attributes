@@ -58,6 +58,10 @@ local gameSetup = {
         startButton:addEventListener( "tap", gameSetup.startGame )
     end
     function gameSetup.congratulations()
+        --remove buttons
+        for i=1, gameSetup.buttons.numChildren do 
+            display.remove( gameSetup.buttons[ 1 ])
+        end
         local text = display.newText( {
             text = ("Congratulations!\nThat's correct!"),
             x = display.contentCenterX,
@@ -70,6 +74,7 @@ local gameSetup = {
             }
         )
         gameSetup.tempObjects:insert( text )
+        gameSetup.menuButton()
         gameSetup.newAttributeButtonCentered()
     end
     function gameSetup.startGame( event )
@@ -229,8 +234,8 @@ local gameSetup = {
     end --directions function
     function gameSetup.hintButton()
         local hintButton = display.newImageRect( ".\\lib\\images\\hintButton.png", 0.35 * display.contentWidth, 0.1 * display.contentHeight)
-        hintButton.x = 0.2 * display.contentWidth
-        hintButton.y = 0.07 * display.contentHeight
+        hintButton.x = display.contentCenterX
+        hintButton.y = 0.93 * display.contentHeight
         gameSetup.buttons:insert( hintButton )
         hintButton:addEventListener( "tap", gameSetup.hint )
     end --hintButton
@@ -238,7 +243,7 @@ local gameSetup = {
         local hintText = display.newText( {
             text = ( gameSetup.currentObjectsTable[ 1 ].hint ), --textObject is located at index 1
             x = display.contentCenterX, --x
-            y = display.contentHeight * 0.5, --display.contentHeight / 30, --y 
+            y = display.contentHeight * 0.3, --display.contentHeight / 30, --y 
             width = 0.8 * display.contentWidth, --width
             height = 0.5 * display.contentHeight, --height
             font = native.systemFont, --font
