@@ -18,3 +18,10 @@ To Run Program :
 		The game should should automatically start
 To change the type of device being simulated go to top of simulator "view" > "view as" 
 The testing was done using 'IphoneX'
+
+The majority of the functionality is in the file ./lib/gameSetup.lua
+The ./lib/images/ directory holds the pictures used
+The ./lib/numbers/ directory holds .lua files that are used to create number
+objects on the screen. The code in these files are uniformly formatted.
+The ./lib/numbers/ directory holds .lua files that are used to create basic
+shapes on the screen. The code in these files are uniformly formatted.
